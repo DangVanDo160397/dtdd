@@ -15,9 +15,9 @@ class checkLogin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::guest()==1) {
+        if(!Auth::check()){
             return redirect()->route('admin.get.login');
         }
-        return $next($request);
+            return $next($request); 
     }
 }

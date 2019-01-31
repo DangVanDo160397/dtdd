@@ -10,7 +10,6 @@ class Admin extends Authenticatable
 {
     //
 	protected $table = 'admins';
-	// protected $guard = 'tbl_admin_users';
 	protected $fillable = [
 		'username', 'email', 'password','permission',
 	];

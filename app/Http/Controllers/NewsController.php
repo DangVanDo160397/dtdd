@@ -15,7 +15,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $listNews = News::all();
+        $listNews = News::paginate(5);
         return view('admin.new.index',compact('listNews'));
     }
 
@@ -37,27 +37,28 @@ class NewsController extends Controller
      */
     public function store(NewsRequest $request)
     {
-            
-           $new = new News;
-           $new->author = Auth::user()->name;
-           $new->title = $request->title;
-           $new->description = $request->description;
-           $new->content = $request->content;
+         $new = new News;
 
-             // upload thumbnail
-           $allow_type = ["jpg","jpeg","png","svg","png","gif"];
-           if($request->hasFile('thumbnail')){
+         // upload thumbnail
+         $allow_type = ["jpg","jpeg","png","svg","png","gif"];
+         if($request->hasFile('thumbnail')){
             $thumbnail = $request->thumbnail;
             $file_ext = $thumbnail->getClientOriginalExtension();
             if(in_array($file_ext, $allow_type)){
                 $file_name = 'new_'.time().'.'.$file_ext;
                 $link_thumbnail = $thumbnail->move("upload",$file_name)->getPathname();
-                $new->thumbnail = $link_thumbnail;
             }
         }
-        $new->save();
+        $new::create(
+        [
+            'title'=>$request->title,
+            'description'=>$request->description,
+            'content'=>$request->content,
+            'author'=>Auth::user()->name,
+            'thumbnail'=>$link_thumbnail
+        ]);
         return redirect()->route('admin.new.index');     
-    }
+}
 
     /**
      * Display the specified resource.
@@ -79,7 +80,6 @@ class NewsController extends Controller
     public function edit($id)
     {
         $list_new = News::findOrFail($id);
-
          return view('admin.new.edit',compact('list_new'));
     }
 
@@ -100,8 +100,8 @@ class NewsController extends Controller
             if(in_array($file_ext, $allow_type)){
                 $file_name = 'new_'.time().'.'.$file_ext;
                 $link_thumbnail = $thumbnail->move("upload",$file_name)->getPathname();
-                 $new->thumbnail = $link_thumbnail;
-                  $new->save();
+                $new->thumbnail = $link_thumbnail;
+                $new->save();
             }
         }
          $new->update($request->only('title','content','description'));
@@ -118,6 +118,6 @@ class NewsController extends Controller
     {
         $new = News::findOrFail($id);
         $new->delete();
-        return redirect()->route('admin.new.index');
+        return redirect()->route('admin.get.index');
     }
 }

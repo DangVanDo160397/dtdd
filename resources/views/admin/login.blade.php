@@ -11,6 +11,7 @@
     <style>
     body{
         background-color: #CFCECE;
+        background-image: url('{{asset('upload/login-bg.jpg')}}');
     }
     .container{
 
@@ -25,6 +26,9 @@
     i{
         font-size: 20px;
         padding-right: 10px;
+    }
+    .remember{
+        cursor: pointer;
     }
 </style>
 <div id="container">
@@ -41,7 +45,7 @@
             <input type="password" name="password" id="password" class="form-control">
         </div>
         <div class="form-group"> 
-            <label>
+            <label class="remember">
                 <input name="remember" type="checkbox" value="Remember Me">&nbsp;Remember Me
             </label>
         </div>

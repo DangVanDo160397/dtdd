@@ -7,7 +7,7 @@
                         <li class="sub-menu">
                             <a href="#"><i class="fas fa-pencil-alt"></i>Sản Phẩm <i class="fa fa-angle-down"></i></a>
                             <ul class="children" id="categories">
-                                <li><a href="#"><span>-</span> Tất cả sản phẩm</a></li>
+                                <li><a href="{{route('admin.product.index')}}"><span>-</span> Tất cả sản phẩm</a></li>
                                 <li><a href="#"><span>-</span> Quản lý sản phẩm</a></li>
                             </ul>
                         </li>
@@ -36,7 +36,7 @@
                         <li class="sub-menu">
                             <a href="#"><i class="fas fa-user"></i>Thành Viên <i class="fa fa-angle-down"></i></a>
                             <ul class="children" id="categories">
-                                <li><a href="#"><span>-</span> Tất cả thành viên</a></li>
+                                <li><a href="{{route('admin.profile.index')}}"><span>-</span> Tất cả thành viên</a></li>
                                 <li><a href="#"><span>-</span> Quản lý thành viên</a></li>
                             </ul>
                         </li>

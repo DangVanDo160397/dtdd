@@ -14,16 +14,6 @@ class AdminController extends Controller
     	}
 			return view('admin.login');
 		}
-		// public function postLogin(Request $request){
-		// 	echo $request->remember;
-		// 	$email = $request->email;
-		// 	$password = $request->password;
-		// 	$remember = isset($request->remember) ? 1:0;
-		// 	if(Auth::guard('admin')->attempt(['email' => $email, 'password' => $password],$remember)){
-		// 		return redirect()->route('admin.get.index');
-		// 	}
-		// 	return back();
-		// }
 		
 		public function postLogin(Request $request){
 			echo $request->remember;

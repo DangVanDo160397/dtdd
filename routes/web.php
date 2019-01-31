@@ -21,4 +21,6 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'],function(){
 
 	Route::resource('company','CompanyController',['as' => 'admin']);
 	Route::resource('new','NewsController',['as' => 'admin']);
+	Route::resource('product','ProductsController',['as' => 'admin']);
+	Route::resource('profile','ProfileController',['as'=>'admin']);
 });

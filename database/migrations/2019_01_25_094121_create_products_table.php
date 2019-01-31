@@ -16,6 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('product_id');
             $table->string('name');
+            $table->string('thumbnail')->nullalbe();
             $table->integer('price');
             $table->string('screen_size');
             $table->string('operating_system');
@@ -24,7 +25,9 @@ class CreateProductsTable extends Migration
             $table->string('camera');
             $table->string('memories');
             $table->string('pin');
-            $table->string('status');
+            $table->binary('status');
+            $table->integer('cat_id')->unsigned();
+            $table->foreign('cat_id')->references('company_id')->on('company')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -26,5 +26,6 @@
             <div class="clearfix"></div>
         </div>
         @include('admin.partials.footer')
+        <!-- @include('admin.partials.script') -->
     </body>
 </html>
