@@ -18,11 +18,11 @@
 					<tr>
 						<td>{{$company->name}}</td>
 						<td>
-							<a href="{{route('admin.company.edit',$company->company_id)}}" class="">Sửa</a>&nbsp;&nbsp;
+							<a href="{{route('admin.company.edit',$company->company_id)}}" style="margin-bottom:5px"class="btn btn-primary">Sửa</a>&nbsp;&nbsp;
 							<form action="{{route('admin.company.destroy',$company->company_id)}}" method="post">
 								{{ csrf_field()}}
 								{{method_field('DELETE')}}
-								<input type="submit" value="Xóa" style="padding:1px 2px;">
+								<input type="submit" value="Xóa" onclick="window.confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger">
 							</form>
 						</td>
 					</tr>

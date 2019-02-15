@@ -62,8 +62,8 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $profile = User::findOrFail($id);
-        return view('admin.profile.edit');
+        $list_profile = User::findOrFail($id);
+        return view('admin.profile.edit',compact('list_profile'));
     }
 
     /**
@@ -73,9 +73,12 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProfileRequest $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $request->merge(['password' => bcrypt($request->password)]);
+        $user->update($request->all());
+        return redirect()->route('admin.profile.index')->with('alert','Sửa thành công');
     }
 
     /**

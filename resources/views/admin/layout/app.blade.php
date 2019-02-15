@@ -5,6 +5,11 @@
         $acc = Auth::user();
      ?>
     <body>
+        <style>
+            a:hover{
+                text-decoration: none;
+            }
+        </style>
         <div id="main">
             <div id="title">
                 <div id="info">
@@ -12,7 +17,7 @@
                     <ts>{{ $acc->name}}</ts>
                     <span>{{ $acc->permission }}</span>
                 </div>
-                <div class="title">Admin Panel</div>
+                <div class="title"><a href="{{route('admin.get.index')}}" style="cursor: pointer; color:white;">Admin Panel</a></div>
             </div>
             <div id="left">
                 @include('admin.partials.header')

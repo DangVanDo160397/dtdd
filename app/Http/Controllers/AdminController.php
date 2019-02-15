@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Gate;
 use App\Admin;
 class AdminController extends Controller
 {
+    public function __contructor(){
+    	$this->middleware('Auth:admin');
+    }
     
     public function getLogin(){
     	if(Auth::check()){
@@ -16,7 +19,6 @@ class AdminController extends Controller
 		}
 		
 		public function postLogin(Request $request){
-			echo $request->remember;
 			$email = $request->email;
 			$password = $request->password;
 			$remember = isset($request->remember) ? 1:0;
@@ -35,8 +37,4 @@ class AdminController extends Controller
 			return view('admin.index');
 		}
 
-		public function profile(){
-			$acc = Auth::user();
-			return view('admin.layout.app',compact($acc));
-		}
 }

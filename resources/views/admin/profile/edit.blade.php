@@ -11,44 +11,40 @@
 						<strong>Lỗi! </strong>{{$errors->first()}}
 				</div>
 				@endif
-				<form action="{{route('admin.profile.update',$list_profile->d)}}" method="post" enctype="multipart/form-data">
+				<form action="{{route('admin.profile.update',$list_profile->id)}}" method="post" enctype="multipart/form-data">
 					{{csrf_field()}}
 					{{method_field('PUT')}}
 					<div class="form-group">
 						<label for="">Tên </label>
-						<input type="text" value="{{$list_profile->title}}" name="title" class="form-control">
+						<input type="text" value="{{$list_profile->name}}" name="name" class="form-control">
 					</div>
 					
 					<div class="form-group">
 						<label for="">Email </label>
-						<input type="text" value="{{$list_profile->title}}" name="title" class="form-control">
+						<input type="text" value="{{$list_profile->email}}" name="email" class="form-control">
 					</div>
 
 					<div class="form-group">
-						<label for="">Mật khẩu cũ</label>
-						<input type="text" value="{{$list_profile->description}}" name="description" class="form-control">
-					</div>
-					
-					<div class="form-group">
-						<label for="">Mật khẩu cũ</label>
-						<input type="text" value="{{$list_profile->description}}" name="description" class="form-control">
+						<label for="">Mật khẩu </label>
+						<input type="password" value="" name="password" class="form-control">
 					</div>
 					
 					<div class="form-group">
 						<label for="">Nhập lại mật khẩu</label>
-						<textarea name="content" id="" cols="30" rows="10"  class="form-control">{{$list_profile->content}}</textarea>
+						<input type="password" value="" name="password_confirmation" class="form-control">
 					</div>
 
 					<div class="form-group">
-						<label for="">Ảnh đại diện</label>
-						<div class="image" style="width: 150px;height: auto; border: 1px solid rgba(0,0,0,0.5); margin: 10px 0;">
-								<img src="{{asset($list_profile->thumbnail)}}" alt="" style="width: 100%;">
-						</div>
-						<input type="file" value="" name="thumbnail" class="">
+						<label for="">Quyền</label>
+						<select name="permission" id="" style="padding:2px 7px;">
+							<option value="{{ $list_profile->permission}}" selected>{{ $list_profile->permission}}</option>
+							<option value="admin">admin</option>
+							<option value="user">user</option>
+						</select>
 					</div>
 
 					<div class="form-group">
-						<input type="submit" value="Sửa" name="name" class="btn btn-primary">
+						<input type="submit" value="Sửa" name="" class="btn btn-primary">
 					</div>
 				</form>	
 			</div>

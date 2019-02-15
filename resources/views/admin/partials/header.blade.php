@@ -1,46 +1,32 @@
 
-                 <?php 
-                    // $acc = Auth::guard('admin')->user();
-                 ?>
               <nav>
                     <ul>
                         <li class="sub-menu">
-                            <a href="#"><i class="fas fa-pencil-alt"></i>Sản Phẩm <i class="fa fa-angle-down"></i></a>
-                            <ul class="children" id="categories">
-                                <li><a href="{{route('admin.product.index')}}"><span>-</span> Tất cả sản phẩm</a></li>
-                                <li><a href="#"><span>-</span> Quản lý sản phẩm</a></li>
-                            </ul>
+                            <a href="{{route('admin.product.index')}}"><i class="fas fa-pencil-alt"></i>Sản Phẩm </a>
                         </li>
                         <li class="sub-menu">
-                            <a href="#"><i class="fas fa-folder"></i>Danh Mục <i class="fa fa-angle-down"></i></a>
-                            <ul class="children" id="categories">
-                                <li><a href="{{ route('admin.company.index')}}"><span>-</span> Tất cả danh mục</a></li>
-                                <li><a href="#"><span>-</span> Quản lý danh mục</a></li>
-                            </ul>
+                            <a href="{{ route('admin.company.index')}}"><i class="fas fa-folder"></i>Danh Mục </a>
                         </li>
                         <li class="sub-menu">
-                            <a href="#"><i class="fas fa-newspaper"></i></i>Tin Tức <i class="fa fa-angle-down"></i></a>
-                            <ul class="children" id="categories">
-                                <li><a href="{{ route('admin.new.index')}}"><span>-</span> Tất cả tin tức</a></li>
-                                <li><a href="#"><span>-</span> Quản lý tin tức</a></li>
-                            </ul>
+                            <a href="{{ route('admin.new.index')}}"><i class="fas fa-newspaper"></i></i>Tin Tức </a>
                         </li>
                         <li class="sub-menu">
                             <a href="#"><i class="fas fa-shopping-cart"></i>Đơn Đặt Hàng <i class="fa fa-angle-down"></i></a>
                             <ul class="children" id="categories">
-                                <li><a href="#"><span>-</span> Tất cả đơn đặt hàng</a></li>
-                                <li><a href="#"><span>-</span> Đơn hàng hủy trả</a></li>
+                                <li><a href="{{ route('admin.order.index')}}"><span>-</span> Đơn hàng chưa nhận</a></li>
+                                <li><a href="{{route('admin.order.received')}}"><span>-</span> Đơn hàng đã nhận</a></li>
                             </ul>
                         </li>
                         @can('permission',Auth::user())
                         <li class="sub-menu">
                             <a href="#"><i class="fas fa-user"></i>Thành Viên <i class="fa fa-angle-down"></i></a>
                             <ul class="children" id="categories">
-                                <li><a href="{{route('admin.profile.index')}}"><span>-</span> Tất cả thành viên</a></li>
-                                <li><a href="#"><span>-</span> Quản lý thành viên</a></li>
+                                <li><a href="{{route('admin.profile.index')}}"><span>-</span> Quản trị viên</a></li>
+                                <li><a href="{{route('admin.customer.index')}}"><span>-</span> Khách hàng</a></li>
                             </ul>
                         </li>
                         @endcan
+                        <li class="sub-menu" id="setting"><a href="{{route('admin.get.index')}}"><i class="fas fa-database"></i>Thống kê</a></li>
                         @can("permission",Auth::user())          
                         <li class="sub-menu" id="setting"><a href=""><i class="fa fa-cog"></i>Cài Đặt</a></li>
                         @endcan

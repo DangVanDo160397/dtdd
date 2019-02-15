@@ -11,4 +11,7 @@ class Company extends Model
 	protected $fillable = [
 		'company_id','name'
 	];
+	public function product(){
+		return $this->hasMany(Products::class,'cat_id');
+	}
 }

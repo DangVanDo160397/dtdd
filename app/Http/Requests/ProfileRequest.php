@@ -26,7 +26,8 @@ class ProfileRequest extends FormRequest
             'name' => 'Tên đăng nhập',
             'email' => 'Email',
             'password' => 'Mật khẩu',
-            'password_confirmation' => 'Mật khẩu nhập lại'
+            'password_confirmation' => 'Mật khẩu nhập lại',
+            'email' => 'Email'
         ];
     }
     public function messages(){
@@ -34,7 +35,9 @@ class ProfileRequest extends FormRequest
             'required' => ':attribute không được để trống',
             'max' => ':attribute không được quá :max ký tự',
             'min' => ':attribute không được ít hơn :min ký tự',
-            'confirmed' => 'Xác nhận mật khẩu không khớp'
+            'confirmed' => 'Xác nhận mật khẩu không khớp',
+            'email' => 'Địa chỉ email không hợp lệ',
+            'unique' => ':attribute đã tồn tại'
         ];
     }
     public function rules()
@@ -43,7 +46,7 @@ class ProfileRequest extends FormRequest
             'name' => 'required|min:6|max:255',
             'password' => 'required|min:6|max:12|confirmed',
             'password_confirmation'=> 'required|min:6|max:12',
-            'email' => 'required|min:6|max:255|email'
+            'email' => 'required|min:6|max:255|email|unique:users'
         ];
     }
 }

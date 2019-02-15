@@ -14,63 +14,82 @@
 				<form action="{{route('admin.product.store')}}" method="post" enctype="multipart/form-data">
 					{{csrf_field()}}
 					<div class="form-group">
-						<label for="">Tên sản phẩm</label>
-						<input type="text" value="{{old('name')}}" name="name" class="form-control">
+						<div class="row">
+							<div class="col-md-6">	
+								<label for="">Tên sản phẩm</label>
+								<input type="text" value="{{old('name')}}" name="name" class="form-control">
+							</div>
+							<div class="col-md-6">
+								<label for="">Giá</label>
+								<input type="text" value="{{old('price')}}" name="price" class="form-control">
+							</div>
+						</div>
 					</div>
 					
 					<div class="form-group">
-						<label for="">Giá</label>
-						<input type="text" value="{{old('price')}}" name="price" class="form-control">
+						<div class="row">
+							<div class="col-md-6">
+								<label for="">Kích thước màn hình</label>
+								<input type="text" value="{{old('screen_size')}}" name="screen_size" class="form-control">
+							</div>
+							<div class="col-md-6">
+								<label for="">Hệ điều hành</label>
+								<input type="text" value="{{old('operating_system')}}" name="operating_system" class="form-control">
+							</div>
+						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="">Kích thước màn hình</label>
-						<input type="text" value="{{old('screen_size')}}" name="screen_size" class="form-control">
-					</div>
-
-					<div class="form-group">
-						<label for="">Hệ điều hành</label>
-						<input type="text" value="{{old('operating_system')}}" name="operating_system" class="form-control">
-					</div>
-
-					<div class="form-group">
+						<div class="row">
+						<div class="col-md-6">
 						<label for="">Chíp xử lý (CPU)</label>
 						<input type="text" value="{{old('cpu')}}" name="cpu" class="form-control">
 					</div>
 
-					<div class="form-group">
+					<div class="col-md-6">
 						<label for="">Ram</label>
 						<input type="text" value="{{old('ram')}}" name="ram" class="form-control">
 					</div>
-
+						</div>
+					</div>
+					
 					<div class="form-group">
-						<label for="">Camera</label>
-						<input type="text" value="{{old('camera')}}" name="camera" class="form-control">
+						<div class="row">
+							<div class="col-md-6">
+
+								<label for="">Camera</label>
+								<input type="text" value="{{old('camera')}}" name="camera" class="form-control">
+							</div>
+
+							<div class="col-md-6">
+								<label for="">Bộ nhớ</label>
+								<input type="text" value="{{old('memories')}}" name="memories" class="form-control">
+							</div>
+						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="">Bộ nhớ</label>
-						<input type="text" value="{{old('memories')}}" name="memories" class="form-control">
-					</div>
+						<div class="row">
+							<div class="col-md-6">
+								<label for="">Pin</label>
+								<input type="text" value="{{old('pin')}}" name="pin" class="form-control">
+							</div>
 
-					<div class="form-group">
-						<label for="">Pin</label>
-						<input type="text" value="{{old('pin')}}" name="pin" class="form-control">
+							<div class="col-md-6">
+								<label for="">Hãng</label>
+								<select name="cat_id" id="" calss="form-control" style="padding: 2px 7px;width: 100%;width: 100%;margin-top: 5px; margin-bottom: 15px;font-size: 14px;height: 34px;line-height: 1.42857143;    border: 1px solid #ccc;border-radius: 5px;">
+									@foreach($company as $com)
+									<option value="{{$com->company_id}}">{{$com->name}}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="status">Sản phẩm hot
                 <input name="status" type="checkbox" value="1">&nbsp;
             </label>
-					</div>
-
-					<div class="form-group">
-						<label for="">Hãng</label>
-						<select name="cat_id" id="" style="padding: 2px 7px;">
-							@foreach($company as $com)
-							<option value="{{$com->company_id}}">{{$com->name}}</option>
-							@endforeach
-						</select>
 					</div>
 
 					<div class="form-group">

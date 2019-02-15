@@ -15,7 +15,7 @@ class ProductTableSeeder extends Seeder
         DB::table('products')->insert(
             [
             'name' => 'Apple iPhone X - 64GB',
-            'thumbnail' => 'https://staticshop.o2.co.uk/product/images/iphone-x-space-grey-sku-header.png?cb=25dc5afb0412fc40a28aa29d82cb53d0',
+            'thumbnail' => 'product/AxY5MslzbCwCQRmox3Lm7Mnf0OPByDaLo71xs3U9.jpeg',
             'price' => '12750000',
             'screen_size' => '5,5 inch',
             'operating_system' => 'iOS',
@@ -29,6 +29,6 @@ class ProductTableSeeder extends Seeder
             ]
         );
 
-         factory(Products::class,10)->create();
+         factory(Products::class,50)->create();
     }
 }

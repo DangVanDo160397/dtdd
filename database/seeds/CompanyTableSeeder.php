@@ -13,17 +13,32 @@ class CompanyTableSeeder extends Seeder
     {
         DB::table('company')->insert(
             [
+            'name' => 'iPhone',
+            'slug' => 'iphone',
+            ]
+        );
+        DB::table('company')->insert(
+            [
             'name' => 'Samsung',
+            'slug' => 'samsung',
+            ]
+        );
+        DB::table('company')->insert(
+            [
+            'name' => 'Xiaomi',
+            'slug' => 'xiaomi',
             ]
         );
         DB::table('company')->insert(
             [
             'name' => 'Oppo',
+            'slug' => 'oppo',
             ]
         );
         DB::table('company')->insert(
             [
-            'name' => 'Iphone',
+            'name' => 'Nokia',
+            'slug' => 'nokia',
             ]
         );
     }

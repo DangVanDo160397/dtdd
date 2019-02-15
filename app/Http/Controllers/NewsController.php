@@ -66,9 +66,9 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($key)
     {
-        //
+        
     }
 
     /**
@@ -118,6 +118,21 @@ class NewsController extends Controller
     {
         $new = News::findOrFail($id);
         $new->delete();
-        return redirect()->route('admin.get.index');
+        return redirect()->route('admin.new.index');
+    }
+
+    public function search(Request $request){
+        $key = trim($request->key);
+        if($key != ""){
+            $listNews = News::where('title','LIKE','%'.$key.'%')->paginate(5);
+            if(count($listNews) > 0){
+                return view('admin.new.search',compact('listNews'));    
+            }else{
+                return redirect()->route('admin.new.index')->with('error',' Không tìm thấy');
+            }
+        }else{
+                return redirect()->route('admin.new.index')->with('error',' Không tìm thấy');
+        }  
+        
     }
 }
