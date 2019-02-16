@@ -53,7 +53,7 @@
 							<td>{{$product->name}}</td>
 							<td>{{$product->category->name}}</td>
 							<td>{{$product->price}}</td>
-							<td>@if($product->status == 1) <span class="glyphicon glyphicon-ok"></span>@endif</td>
+							<td>@if($product->status == 1) <i class="fas fa-check"></i>@endif</td>
 							<td>
 								<a href="#" class="open-modal" data-toggle="modal" data-cat="{{$product->category->name}}" data-product ="{{ $product->toJson()}}" data-target="#myModal">Xem chi tiết</a>
 								<!-- Modal -->
@@ -68,7 +68,7 @@
 														<div class="row">
 															<div class="col-md-6">
 																<div class="thumbnail">
-																	<img src="{{asset($product->thumbnail)}}" id="thumbnail" alt="" style="width: 100%;">
+																	<img src="{{asset('storage/'.$product->thumbnail)}}" id="thumbnail" alt="" style="width: 100%;">
 																</div>
 															</div>
 															<div class="col-md-6">
@@ -174,6 +174,9 @@
 	</div>
 </div>
 
+
+@endsection('content')
+@section('script')
 <script>
 	
 	$(document).ready(function(){
@@ -181,6 +184,7 @@
 			 	var product = $(this).data('product');
 			 	var cat = $(this).data('cat');
 			 	$('#name').val(product.name);
+			 	// console.log($('#name').val(product.name));
 		 		$('#price').val(product.price.toLocaleString('de-DE')+" đ");
 		 		$('#screen').val(product.screen_size+" px");
 		 		$('#thumbnail').attr("src","{{asset('')}}"+"storage/"+product.thumbnail);
@@ -192,4 +196,4 @@
 		});
 	});
 </script>
-@endsection('content')
+@endsection(script)

@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6">
                     <div class="single-promo promo1">
-                        <i class="fa fa-refresh"></i>
+                        <i class="fas fa-sync-alt"></i>
                         <p>Hoàn trả trong 30 ngày đầu tiên</p>
                     </div>
                 </div>

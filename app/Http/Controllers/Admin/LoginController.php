@@ -1,21 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Admin;
-class AdminController extends Controller
+use App\Http\Controllers\Controller;
+
+class LoginController extends Controller
 {
-    public function __contructor(){
-    	$this->middleware('Auth:admin');
+    public function __construct(){
+    	$this->middleware('guest:admin');
     }
     
     public function getLogin(){
     	if(Auth::check()){
     		return redirect()->route('admin.get.index');;
     	}
-			return view('admin.login');
+    	return view('admin.login');
+    }
 		}
 		
 		public function postLogin(Request $request){
@@ -26,15 +29,6 @@ class AdminController extends Controller
 				return redirect()->route('admin.get.index');
 			}
 			return back();
-		}
-
-		public function logout(){
-					Auth::logout();
-					return redirect()->route('admin.get.login');	
-		}
-
-		public function index(){
-			return view('admin.index');
 		}
 
 }

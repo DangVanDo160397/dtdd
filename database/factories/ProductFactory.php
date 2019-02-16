@@ -7,7 +7,7 @@ $factory->define(App\Products::class, function (Faker $faker) {
         'name' => $faker->bothify('SamSung ##??'),
         'thumbnail' => 'product/AxY5MslzbCwCQRmox3Lm7Mnf0OPByDaLo71xs3U9.jpeg',   
         'screen_size' => $faker->randomElement($array = array ('5','5.2','5.5','5.7','6','6.2')),
-        'price' => $faker->numberBetween($min = 1000000, $max = 2000000),
+        'price' => $faker->numberBetween($min = 2000000, $max = 10000000),
         'operating_system' => $faker->numerify('iOS ###'),
         'cpu' => $faker->bothify('Snapdragon ##??'),
         'ram' => $faker->randomDigit(),

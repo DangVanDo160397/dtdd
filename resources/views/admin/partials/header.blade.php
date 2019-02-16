@@ -30,6 +30,7 @@
                         @can("permission",Auth::user())          
                         <li class="sub-menu" id="setting"><a href=""><i class="fa fa-cog"></i>Cài Đặt</a></li>
                         @endcan
+                        <li class="sub-menu" id="setting"><a href="{{route('customer.index')}}"><i class="fas fa-hand-point-right"></i></i>Hoàng hà mobile</a></li>
                         <li class="sub-menu" id="setting"><a href="{{route('admin.get.logout')}}"><i class="fas fa-sign-out-alt"></i></i>Đăng Xuất</a></li>         
                     </ul>
                 </nav>

@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\NewsRequest;
 use App\News;
 use Auth;
+use App\Http\Controllers\Controller;
+
 class NewsController extends Controller
 {
     /**
@@ -66,7 +68,7 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($key)
+    public function show($id)
     {
         
     }

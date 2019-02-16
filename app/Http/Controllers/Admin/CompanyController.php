@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Company;
 use Auth;
 use Illuminate\Support\Facades\Gate;
+use App\Http\Controllers\Controller;
+
 class CompanyController extends Controller
 {
     /**

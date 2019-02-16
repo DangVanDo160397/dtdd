@@ -17,9 +17,8 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->string('order_code');
             $table->longText('order_detail');
-            $table->date('order_date');
+            $table->datetime('order_date');
             $table->integer('customer_id');
-            $table->integer('product_id');
             $table->integer('count');
             $table->integer('total');
             $table->binary('status');

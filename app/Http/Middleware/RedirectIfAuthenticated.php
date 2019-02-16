@@ -18,7 +18,20 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            switch ($guard) {
+                case 'admin':
+                    return rediect()->route('admin.get.index');
+                    break;
+                case 'web':
+                    return redirect()->route('');
+                    break;
+                case 'customer':
+                    return redirect()->route('customer.profile.index');
+                default:
+                    return redirect('/');
+                    break;
+            }
+            return redirect('/admin.404');
         }
 
         return $next($request);

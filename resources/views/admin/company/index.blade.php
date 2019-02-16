@@ -20,10 +20,10 @@
 						<td>
 							<a href="{{route('admin.company.edit',$company->company_id)}}" style="margin-bottom:5px"class="btn btn-primary">Sửa</a>&nbsp;&nbsp;
 							<form action="{{route('admin.company.destroy',$company->company_id)}}" method="post">
-								{{ csrf_field()}}
-								{{method_field('DELETE')}}
-								<input type="submit" value="Xóa" onclick="window.confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger">
-							</form>
+									{{ csrf_field()}}
+									{{method_field('DELETE')}}
+									<input type="submit" class="btn btn-danger" onclick="window.confirm('Bạn có chắc chắn muốn xóa?')" value="Xóa">
+								</form>
 						</td>
 					</tr>
 					@endforeach

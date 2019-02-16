@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 // use App\Http\Requests\ProductRequest;
 use App\Products;
 use App\Company;
+use App\Http\Controllers\Controller;
+
 class ProductsController extends Controller
 {
     /**

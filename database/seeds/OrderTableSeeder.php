@@ -14,9 +14,8 @@ class OrderTableSeeder extends Seeder
         DB::table('orders')->insert([
         	'order_code' => str_random(6),
             'order_detail' => str_random(60),
-        	'order_date' => date("Y/m/d"),
+        	'order_date' => '2011-12-18 13:17:17',
         	'customer_id' => 1,
-        	'product_id' => 1,
         	'count' => 1,
         	'total' => 1000,
         	'status' => 1,

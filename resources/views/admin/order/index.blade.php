@@ -25,13 +25,13 @@
 				<table class="table table-striped table-bordered">
 						<tr>
 							<th>STT</th>
-							<th>Ảnh</th>
 							<th>Mã đơn hàng</th>
-							<th>Tên hàng</th>
 							<th>Người mua</th>
+							<th>Ngày đặt</th>
 							<th>Số lượng</th>
-							<th>Thành tiền</th>
+							<th>Tổng tiền</th>
 							<th>Trạng thái</th>
+							<th></th>
 							<th>Quản lý</th>
 						</tr>
 					<?php 
@@ -41,21 +41,17 @@
 						?>
 						<tr>
 							<td><?php echo ++$stt ?></td>
-							<td>
-								<div class="image" style="width: 150px;height: auto">
-									<img src="{{asset('storage/'.$order->product->thumbnail)}}" alt="" style="width: 100%;">
-								</div>
-							</td>
-							<td>{{$order->order_code}}</td>
-							<td>{{$order->product->name}}</td>
+							<td><strong>{{$order->order_code}}</strong></td>
 							<td>{{$order->customer->name}}</td>
+							<td>{{date('d-m-Y', strtotime($order->order_date))}}</td>
 							<td>{{$order->count}}</td>
-							<td>{{$order->total}}</td>
+							<td>{{number_format($order->total)}} đ</td>
 							@if($order->status==1)
 								<td style="color:red">Chưa nhận</td>
 							@else
 								<td style="color:green">Đã nhận</td>
 							@endif
+							<td><a href="{{route('admin.order.show',$order->id)}}">Chi tiết</a></td>
 							<td>
 								<form action="{{route('admin.order.update',$order->id)}}" method="post" style="margin-bottom:5px">
 									{{csrf_field()}}
@@ -63,27 +59,27 @@
 									<input type="submit" class="btn btn-primary" value="Nhận đơn">
 								</form>
 								
-								<form action="{{route('admin.order.destroy',$order->id)}}">
+								<form action="{{route('admin.order.destroy',$order->id)}}" method="post">
 									{{ csrf_field()}}
 									{{method_field('DELETE')}}
-									<input type="submit" class="btn btn-danger" onclick="window.confirm('Bạn có chắc chắn muốn hủy?')" value="Hủy đơn">
+									<input type="submit" style="width: 87px;" class="btn btn-danger" onclick="window.confirm('Bạn có chắc chắn muốn hủy?')" value="Hủy đơn">
 								</form>
+
+
 							</td>
 						</tr>
 					<?php } } ?>
 				</tbody>
 					<div class="row">
-						<div class="col-md-6">
-							
-								{{ $list_orders->links() }}
-							
+						<div class="col-md-6">	
+						{{ $list_orders->links() }}
 						</div>
 						<div class="col-md-6" style="margin-top: 15px">
 							<form action="{{route('admin.order.index')}}" method="get">
 							<!-- {{ csrf_field()}} -->
 								<div class="row">
 									<div class="col-md-9">
-										<input type="text" class="form-control" name="key" placeholder="Nhập tên cần tìm kiếm">
+										<input type="text" class="form-control" name="key" placeholder="Nhập mã đơn hàng cần tìm kiếm">
 									</div>
 									<div class="col-md-3" style="margin-top: 5px">
 										<input type="submit" class="btn btn-primary" value="Tìm kiếm">

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Customer;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Products;
 use App\Cart;
@@ -35,5 +36,9 @@ class CartController extends Controller
     		Session::forget('cart');
     	}
     	return redirect()->back();
+    }
+    public function deleteallCart(){
+        Session::forget('cart');
+        return redirect()->back();
     }
 }

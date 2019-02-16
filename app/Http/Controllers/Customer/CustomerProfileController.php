@@ -1,23 +1,29 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Customer;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\User;
-use App\Http\Requests\ProfileRequest;
-
-class ProfileController extends Controller
+use Auth;
+use App\Customer;
+class CustomerProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __constructor(){
+        $this->middleware('Auth:customer');
+    }
+
+
     public function index()
     {
-        $list_profiles = User::all();
-        return view('admin.profile.index',compact('list_profiles'));
+        $customer = Customer::findOrFail(Auth::guard('customer')->user()->id);
+        return view('customer.profile.index',compact('customer'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -26,7 +32,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('admin.profile.create');
+        //
     }
 
     /**
@@ -35,12 +41,9 @@ class ProfileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProfileRequest $request)
+    public function store(Request $request)
     {
-       
-        $request->merge(['password' => bcrypt($request->password)]);
-        User::create($request->all());
-        return redirect()->route('admin.profile.index');
+        //
     }
 
     /**
@@ -62,8 +65,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $list_profile = User::findOrFail($id);
-        return view('admin.profile.edit',compact('list_profile'));
+        //
     }
 
     /**
@@ -73,12 +75,9 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProfileRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        $request->merge(['password' => bcrypt($request->password)]);
-        $user->update($request->all());
-        return redirect()->route('admin.profile.index')->with('alert','Sửa thành công');
+        //
     }
 
     /**
@@ -89,8 +88,6 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
-        $profile = User::findOrFail($id);
-        $profile->delete();
-        return redirect()->route('admin.profile.index');
+        //
     }
 }

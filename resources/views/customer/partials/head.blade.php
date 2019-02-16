@@ -8,17 +8,18 @@
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="https://www.thegioididong.com/favicon.ico">
     
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css')}}">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/libraries/fontawsome/css/all.css')}}">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('frontend/css/owl.carousel.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
-
+    
   </head>

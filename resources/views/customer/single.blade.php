@@ -93,9 +93,18 @@
                     </a>
                     @endif
             	</div>
+                @if(session('alert'))
+
+                <div class="alert alert-danger" style="margin-top: 40px;">
+                    <strong>OK! </strong> {{ session('alert')}}
+                    <p><a href="{{route('customer.index')}}">Tiếp tục mua hàng?</a><a href="{{route('customer.index')}}">&nbsp;&nbsp;Quản lý đơn hàng</a></p>
+                </div>
+
+
+                @endif
             	<!-- Modal -->
             	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            		<div class="modal-dialog modal-lg" role="document">
+            		<div class="modal-dialog" role="document">
             			<div class="modal-content">
             				<div class="modal-header">
             					<h3 class="modal-title" style="font-weight: 300;color: darkslategrey;line-height: 1.4;" id="exampleModalLabel">Đặt hàng điện thoại {{$product->name}}</h3>
@@ -111,7 +120,7 @@
             							</div>
             							<div class="info" style="text-align: center;">
             								<p><span>{{$product->name}}</span></p>
-            								<p><span>{{number_format($product->price)}} đ</span></p>
+            								<p><span style="color: red">{{number_format($product->price)}} đ</span></p>
             								<div class="total">
             									<style>
             										.total ul li{
@@ -135,7 +144,12 @@
             							</div>
             						</div>
             						<div class="col-md-6">
-            							<form action="">
+            							<form action="{{route('customer.product.order')}}" method="post">
+                                            {{ csrf_field()}}
+                                            <input type="hidden" name="product_id" value="{{$product->product_id}}">
+                                            <input type="hidden" name="product_detail" value="{{$product}}">
+                                            <input type="hidden" id="totalQty" name="totalQty" value="">
+                                            <input type="hidden" id="totalPrice" name="totalPrice" value="">
             								<input type="submit" class="btn btn-primary" value="Đặt hàng">
             							</form>
             						</div>
@@ -156,12 +170,16 @@
    		var sl = parseInt($('#total').html());
    		$('#btnModal').click(function(){
    			var price = parseInt($(this).data('price'));
+            parseInt($('#totalPrice').val(sl*price));
+            parseInt($('#totalQty').val(sl));
    			// giảm số lượng
    			$('#down').click(function(){	
    				if(sl>1){
    					sl--;
    					parseInt($('#price').html((sl*price).toLocaleString('en-US')));
-   					parseInt($('#total').html(sl));
+                    parseInt($('#total').html(sl));
+   					parseInt($('#totalPrice').val(sl*price));
+                    parseInt($('#totalQty').val(sl));
 
    				}			
    			});
@@ -170,6 +188,8 @@
    				sl++;
    				parseInt($('#price').html((sl*price).toLocaleString('en-US')));
    				parseInt($('#total').html(sl));
+                parseInt($('#totalPrice').val(sl*price));
+                parseInt($('#totalQty').val(sl));
    			});
    		});
    	});

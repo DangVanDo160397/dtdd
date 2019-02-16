@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Customer;
+use App\Order;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class CustomerController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $list_customers = Customer::paginate(5);
-        return view('admin.customer.index',compact('list_customers'));
+        $list_orders = Order::where('status',1)->paginate(5);
+        return view('admin.order.index',compact('list_orders'));
     }
 
     /**
@@ -42,21 +43,21 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Customer  $customer
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show(Order $order)
     {
-        //
+        return view('admin.order.show',compact('order'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Customer  $customer
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit(Order $order)
     {
         //
     }
@@ -65,22 +66,30 @@ class CustomerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Customer  $customer
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, Order $order)
     {
-        //
+       $order->update(['status'=>0]);
+        return redirect()->route('admin.order.index')->with('alert','Tiếp nhận đơn hàng thành công');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Customer  $customer
+     * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy(Order $order)
     {
-        //
+         $order->delete();
+         return redirect()->route('admin.order.index');
     }
+
+    public function received(){
+        $list_orders = Order::where('status',0)->paginate(5);
+        return view('admin.order.received',compact('list_orders'));
+    }
+
 }

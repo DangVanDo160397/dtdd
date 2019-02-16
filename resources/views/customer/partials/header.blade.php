@@ -49,7 +49,7 @@
                                 @if(!Auth::guard('customer')->check())
                                     <a class="dropdown-toggle" href="{{route('customer.get.login')}}"><span class="key">Đăng nhập</span></a>
                                 @else
-                                    <a class="dropdown-toggle" href="{{route('customer.information')}}">Xin chào: <span class="key">{{$user->name}}</span></a>&nbsp;&nbsp;&nbsp;
+                                    <a class="dropdown-toggle" href="{{route('customer.profile.index')}}">Xin chào: <span class="key">{{$user->name}}</span></a>&nbsp;&nbsp;&nbsp;
                                     <a class="dropdown-toggle" href="{{route('customer.logout')}}">Đăng xuất <span class="key"></span></a>
                                 @endif
 
@@ -84,12 +84,13 @@
                     </div>
                     
                 </div>
-                
+                @if(Auth::guard('customer')->check())
                 <div class="col-sm-3">
                     <div class="shopping-item">
                         <a href="{{route('customer.cart')}}">Cart<i class="fa fa-shopping-cart"></i> <span class="product-count">@if(Session::has('cart')){{Session('cart')->totalQuantity}}@else 0 @endif</span></a>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div> <!-- End site branding area -->
