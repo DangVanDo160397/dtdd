@@ -12,18 +12,16 @@ use Str;
 class HomeController extends Controller
 {
     //
-	public function index(){
+	public function index(Request $request){
 		$check = Auth::guard('customer')->user();
 		$cate_list = Company::all();
 		$product_top_hot = Products::where('status',1)->limit(3)->get();
 		$product_top_date = Products::orderBy('created_at','DESC')->limit(3)->get();
 		$product_random = Products::inRandomOrder()->limit(3)->get();
 		$list_news = News::orderBy('created_at','DESC')->limit(3)->get();
-		//$title_slug = Str::slug($list_news[0]->title);
-		//dd($title_slug); 
+		
+		
 		return view('customer.index',compact('cate_list','check','product_top_hot','product_top_date','product_random','list_news'));
-
-
 	}
 	public function get_product($id){
 		$product = Products::findOrFail($id);
@@ -42,5 +40,25 @@ class HomeController extends Controller
 
 	public function error(){
 		return view('customer.404');
+	}
+
+	public function search(Request $request){
+		if($request->ajax()){
+			$query = $request->get('key');
+			$list_product = Products::where('name','LIKE','%'.$query.'%')->limit(5)->get();
+			if(count($list_product)>0){
+				$data = '';
+				foreach($list_product as $product){
+					$data .= "<li>";
+					$data .= '<img src=" ';
+					$data .= 'storage/'.$product->thumbnail. '" />';
+					$data .= "<h3>".$product->name."</h3>";
+					$data .= "<span>".$product->price."</span>";
+					$data .= "</li>";
+				}
+				echo $data;
+			}
+		}
+		
 	}
 }

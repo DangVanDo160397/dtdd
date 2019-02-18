@@ -27,7 +27,12 @@
     .search-container button:hover {
       background: #ccc;
     }
+    ul.search-product{
+        padding: 0px;
+    }
 </style>
+    
+
     <div class="header-area">
         <div class="container">
             <div class="row">
@@ -75,9 +80,13 @@
                         </div>
                         <div class="col-md-6">
                             <div class="search-container">
-                        <form action="/action_page.php">
-                          <input type="text" placeholder="Nhập từ khóa tìm kiếm.." name="search">
+                        <form action="/action_page.php" method="get">
+                          {{ csrf_field() }}
+                          <input type="text" placeholder="Nhập từ khóa tìm kiếm.." value="" name="search" id="search">
                           <button type="submit">Tìm kiếm</button>
+                          <ul class="search_product">
+                              
+                          </ul>
                       </form>
                   </div>
                         </div>
@@ -119,3 +128,27 @@
             </div>
         </div>
     </div> <!-- End mainmenu area -->
+@section('script')
+    <script>
+        $(document).ready(function(){
+
+            $('#search').keyup(function(){
+                var key = $(this).val();
+                var _token = $('input[name="_token"]').val();
+                if(key != ''){
+                    $.ajax({
+                        url: "{{ route('customer.search')}}",
+                        method: "get",
+                        data: {key:key, _token:_token},
+                        success: function(data){
+                            console.log(data);
+                            $('.search_product').html(data);
+                        },
+                    });
+                }
+                
+            });
+            
+        });
+    </script>
+@endsection(script)
