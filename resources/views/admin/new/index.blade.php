@@ -35,7 +35,7 @@
 					$stt = 0;
 					foreach($listNews as $new){
 						?>
-						<a href="{{route('admin.new.destroy',$new->new_id)}}">Chi tiết</a>
+						
 						<tr>
 							<td><?php echo ++$stt ?></td>
 							<td>

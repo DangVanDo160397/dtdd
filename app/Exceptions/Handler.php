@@ -48,6 +48,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($exception instanceof NotFoundHttpException)
+        {
+            return response()->view('errors.503', [], 404);
+        }
+        else if ($exception instanceof ModelNotFoundException)
+        {
+// Do your stuff here
+            return response()->view('errors.503', [], 404); 
+        }
         return parent::render($request, $exception);
     }
 }

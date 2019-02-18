@@ -19,7 +19,6 @@ class LoginController extends Controller
     	}
     	return view('admin.login');
     }
-		}
 		
 		public function postLogin(Request $request){
 			$email = $request->email;

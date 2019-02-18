@@ -46,7 +46,7 @@ Route::group(['middleware' => 'admin','prefix' => 'admin'],function(){
 	Route::get('customer/search','Admin\CustomerController@search')->name('admin.customer.search');
 	Route::resource('customer','Admin\CustomerController',['as' => 'admin']);
 
-	Route::get('/404','Admin\AdminController@error')->name('admin.404');
+	
 });
 
 //Route customer
@@ -60,10 +60,10 @@ Route::group([],function(){
 	Route::get('/','Customer\HomeController@index')->name('customer.index');
 	Route::get('/{category}','Customer\HomeController@get_category')->name('customer.category');
 	Route::get('/product/{id}','Customer\HomeController@get_product')->name('customer.product');
-
+	Route::get('/404','Customer\Customer\HomeController@error')->name('404');
 	// User sau khi đăng nhập
 	Route::group(['middeware' => 'customer','prefix' => 'customer'],function(){
-		Route::get('/','Customer\UserController@index')->name('customer.logout');
+		// Route::get('/','Customer\UserController@index')->name('customer.profile');
 		Route::get('/logout','Customer\UserController@logout')->name('customer.logout');
 		Route::get('/cart','Customer\CartController@index')->name('customer.cart');
 		Route::get('/add-cart/{id}','Customer\CartController@getAddtoCart')->name('customer.cart.add');

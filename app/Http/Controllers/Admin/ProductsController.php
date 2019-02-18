@@ -109,7 +109,7 @@ class ProductsController extends Controller
             }
         }
         $list_product->update($product);
-        return redirect()->route('admin.product.index');
+        return redirect()->back();
     }
 
     /**
@@ -122,7 +122,7 @@ class ProductsController extends Controller
     {
         $product = Products::findOrFail($id);
         $product->delete();
-        return redirect()->route('admin.product.index');
+        return redirect()->back();
     }
 
     public function search(Request $request){    

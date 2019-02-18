@@ -137,9 +137,10 @@
                     <div class="single-product-widget">
                         <h2 class="product-wid-title">Bán chạy</h2>
                         <a href="" class="wid-view-more">Xem tất cả</a>
+                        @foreach($product_random as $random)
                         <div class="single-wid-product">
-                            <a href="single-product.html"><img src="{{asset('frontend/img/product-thumb-1.jpg')}}" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                            <a href="single-product.html"><img src="{{asset('storage/'.$random->thumbnail)}}" alt="" class="product-thumb"></a>
+                            <h2><a href="{{route('customer.product',$random->product_id)}}">{{$random->name}}</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -148,46 +149,20 @@
                                 <i class="fa fa-star"></i>
                             </div>
                             <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
+                                <ins>{{number_format($random->price)}} đ</ins> <del></del>
                             </div>                            
                         </div>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="{{asset('frontend/img/product-thumb-2.jpg')}}" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Apple new mac book 2015</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="{{asset('frontend/img/product-thumb-3.jpg')}}" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Apple new i phone 6</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="single-product-widget">
-                        <h2 class="product-wid-title">Xem nhiều nhất</h2>
+                        <h2 class="product-wid-title">Sản phẩm nổi bật</h2>
                         <a href="#" class="wid-view-more">Xem tất cả</a>
+                        @foreach($product_top_hot as $hot)
                         <div class="single-wid-product">
-                            <a href="single-product.html"><img src="{{asset('frontend/img/product-thumb-4.jpg')}}" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Sony playstation microsoft</a></h2>
+                            <a href="single-product.html"><img src="{{asset('storage/'.$hot->thumbnail)}}" alt="" class="product-thumb"></a>
+                            <h2><a href="{{route('customer.product',$hot->product_id)}}">{{$hot->name}}</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -196,46 +171,21 @@
                                 <i class="fa fa-star"></i>
                             </div>
                             <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
+                                <ins>{{number_format($hot->price)}} đ</ins> <del></del>
                             </div>                            
                         </div>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="{{asset('frontend/img/product-thumb-1.jpg')}}" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Sony Smart Air Condtion</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="{{asset('frontend/img/product-thumb-2.jpg')}}" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
+                        @endforeach
+                       
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="single-product-widget">
                         <h2 class="product-wid-title">Mới nhất</h2>
                         <a href="#" class="wid-view-more">Xem tất cả</a>
+                        @foreach($product_top_date as $date)
                         <div class="single-wid-product">
-                            <a href="single-product.html"><img src="{{asset('frontend/img/product-thumb-3.jpg')}}" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Apple new i phone 6</a></h2>
+                            <a href="single-product.html"><img src="{{asset('storage/'.$date->thumbnail)}}" alt="" class="product-thumb"></a>
+                            <h2><a href="{{route('customer.product',$date->product_id)}}">{{$date->name}}</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -244,51 +194,38 @@
                                 <i class="fa fa-star"></i>
                             </div>
                             <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
+                                <ins>{{number_format($date->price)}} đ</ins> <del></del>
                             </div>                            
                         </div>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="{{asset('frontend/img/product-thumb-4.jpg')}}" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="{{asset('frontend/img/product-thumb-1.jpg')}}" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Sony playstation microsoft</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
+                        @endforeach
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div> <!-- End product widget area -->
 
-    <div class="new">
+    <div class="product-widget-area">
+        <div class="zigzag-bottom"></div>
         <div class="container">
-            <h2 class="section-title">Tin tức nổi bật</h2>
+            <h2 class="section-title"><a style="color:#00483e" href="#">Tin tức</a></h2>
             <div class="row">
-                <div class="col-md-4">1</div>
-                <div class="col-md-4">2</div>
-                <div class="col-md-4">3</div>
+
+                @foreach($list_news as $new)
+                <div class="col-md-4">
+                    <div class="single-product-widget">
+                        <div class="single-wid-product">
+                            <a href="single-product.html"><img src="{{asset($new->thumbnail)}}" alt="" class="product-thumb"></a>
+                            <h3><a href="{{route('customer.product',$random->product_id)}}">{{$new->title}}</a></h3>
+                            <p>{{preg_replace('/((\w+\W*){'.(10).'}(\w+))(.*)/', '${1}', $new->content).'...'}}</p>
+                            <div class="product-wid-price">
+                                <ins></ins> <del></del>
+                            </div>                            
+                        </div>  
+                    </div>
+                </div>
+                 @endforeach
             </div>
         </div>
-    </div>
+    </div> <!-- End product widget area -->
 @endsection('content')
