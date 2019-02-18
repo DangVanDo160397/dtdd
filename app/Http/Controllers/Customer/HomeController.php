@@ -20,7 +20,6 @@ class HomeController extends Controller
 		$product_random = Products::inRandomOrder()->limit(3)->get();
 		$list_news = News::orderBy('created_at','DESC')->limit(3)->get();
 		
-		
 		return view('customer.index',compact('cate_list','check','product_top_hot','product_top_date','product_random','list_news'));
 	}
 	public function get_product($id){
@@ -43,19 +42,22 @@ class HomeController extends Controller
 	}
 
 	public function search(Request $request){
+
 		if($request->ajax()){
 			$query = $request->get('key');
 			$list_product = Products::where('name','LIKE','%'.$query.'%')->limit(5)->get();
 			if(count($list_product)>0){
-				$data = '';
+				$data = '<ul class="dropdown-menu" style="display:block; position:absolute">';
 				foreach($list_product as $product){
-					$data .= "<li>";
+
+					$data .= "<li><a href='product/".$product->product_id."'>";
 					$data .= '<img src=" ';
 					$data .= 'storage/'.$product->thumbnail. '" />';
-					$data .= "<h3>".$product->name."</h3>";
-					$data .= "<span>".$product->price."</span>";
-					$data .= "</li>";
+					$data .= "<p>".$product->name."</p>";
+					$data .= "<span>".number_format($product->price)." đ</span>";
+					$data .= "</li><a/>";
 				}
+				$data .= '</ul>';
 				echo $data;
 			}
 		}

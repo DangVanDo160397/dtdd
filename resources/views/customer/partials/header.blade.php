@@ -27,8 +27,25 @@
     .search-container button:hover {
       background: #ccc;
     }
-    ul.search-product{
-        padding: 0px;
+    ul.dropdown-menu {
+        margin: 0;
+        padding: 0;
+        width: 95%;
+        display: block;
+        position: absolute;
+        margin-top: 2px;
+    }
+    ul.dropdown-menu li img{
+        width: 50px;
+        height: auto;
+        float: left;
+    }
+    ul.dropdown-menu li{
+        border-bottom: 1px solid #ccc;
+    }
+    ul.dropdown-menu p{
+        margin-bottom: 0;
+        font-size: 20px;
     }
 </style>
     
@@ -80,13 +97,12 @@
                         </div>
                         <div class="col-md-6">
                             <div class="search-container">
-                        <form action="/action_page.php" method="get">
+                        <form action="/action_page.php" method="get" style="position: relative;">
                           {{ csrf_field() }}
                           <input type="text" placeholder="Nhập từ khóa tìm kiếm.." value="" name="search" id="search">
                           <button type="submit">Tìm kiếm</button>
-                          <ul class="search_product">
-                              
-                          </ul>
+                          <div id="search_list"><br>
+                          </div>
                       </form>
                   </div>
                         </div>
@@ -142,12 +158,20 @@
                         data: {key:key, _token:_token},
                         success: function(data){
                             console.log(data);
-                            $('.search_product').html(data);
+                            $('#search_list').fadeIn(); 
+                            $('#search_list').html(data);
                         },
                     });
+                }else{
+                    $('#search_list').fadeOut();
                 }
                 
             });
+
+            $(document).on('click',function(){  
+                $('#search').val('');
+                $('#search_list').fadeOut();  
+            }); 
             
         });
     </script>
