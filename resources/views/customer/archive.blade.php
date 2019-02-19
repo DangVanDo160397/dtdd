@@ -37,7 +37,7 @@
                         </div>  
                         
                         <div class="product-option-shop">
-                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{{route('customer.cart.add',$product['product_id'])}}">Add to cart</a>
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-id="{{$product['product_id']}}" rel="nofollow" href="{{route('customer.cart.add',$product['product_id'])}}">Add to cart</a>
                         </div>                       
                     </div>
                 </div>
@@ -49,3 +49,29 @@
         </div>
     </div>
 @endsection('content')
+
+@section('script2')
+    <script>
+        $(document).ready(function(){
+
+            $('.add_to_cart_button').click(function(event){
+                event.preventDefault();
+                var id = $(this).data('id');
+                var url = "{{route('customer.cart.add')}}";
+                var _token = $('input[name="_token"]').val();
+                    $.ajax({
+                        url: url,
+                        method: "post",
+                        data: {id:id, _token:_token},
+                        success: function(data){
+                            console.log(data);
+                            $('#quantity').html(data);
+                            
+                        },
+                    });
+        
+            });
+            
+        });
+    </script>
+@endsection('script2')

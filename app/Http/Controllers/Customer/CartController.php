@@ -18,13 +18,17 @@ class CartController extends Controller
     	return view('customer.cart');
     }
 
-    public function getAddtoCart( Request $request,$id){
-    	$product = Products::findOrFail($id);
-    	$oldCart = Session('cart')?Session::get('cart'):null;
-    	$cart = new Cart($oldCart);
-    	$cart->addItem($product,$id);
-    	$request->session()->put('cart',$cart);
-    	return redirect()->back();
+    public function getAddtoCart( Request $request){
+        if($request->ajax()){
+            $id = $request->post('id'); 
+            $product = Products::findOrFail($id);
+            $oldCart = Session('cart')?Session::get('cart'):null;
+            $cart = new Cart($oldCart);
+            $cart->addItem($product,$id);
+            $request->session()->put('cart',$cart);
+            echo $cart->totalQuantity;         
+        }
+
     }
     public function deleteCart($id){
     	$oldCart = Session::has('cart')?Session::get('cart'):null;

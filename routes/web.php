@@ -67,7 +67,7 @@ Route::group([],function(){
 		// Route::get('/','Customer\UserController@index')->name('customer.profile');
 		Route::get('/logout','Customer\UserController@logout')->name('customer.logout');
 		Route::get('/cart','Customer\CartController@index')->name('customer.cart');
-		Route::get('/add-cart/{id}','Customer\CartController@getAddtoCart')->name('customer.cart.add');
+		Route::post('/add-cart/','Customer\CartController@getAddtoCart')->name('customer.cart.add');
 		Route::get('/delete-cart/{id}','Customer\CartController@deleteCart')->name('customer.cart.delete');
 		Route::get('/delete-all-cart','Customer\CartController@deleteallCart')->name('customer.cart.deleteall');
 		Route::get('/order','Customer\OrderCustomerController@orderCart_get')->name('customer.get.order');

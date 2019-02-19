@@ -18,3 +18,4 @@
     <script type="text/javascript" src="{{asset('frontend/js/bxslider.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('frontend/js/script.slider.js')}}"></script>
     @yield('script')
+    @yield('script2')

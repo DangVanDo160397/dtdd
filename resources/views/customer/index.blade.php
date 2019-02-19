@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6">
                     <div class="single-promo promo1">
-                        <i class="fas fa-sync-alt"></i>
+                        <i class="fas fa-sync-alt" id="test"></i>
                         <p>Hoàn trả trong 30 ngày đầu tiên</p>
                     </div>
                 </div>
@@ -85,7 +85,10 @@
                                 <div class="product-f-image">
                                     <img src="{{asset('storage/'.$product['thumbnail'])}}" alt="">
                                     <div class="product-hover">
-                                        <a href="{{route('customer.cart.add',$product['product_id'])}}" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a>
+                                        <a href="{{$product['product_id']}}" id="cart" data-id="{{$product['product_id']}}" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Giỏ hàng 
+                                            {{csrf_field()}}
+                                        </a>
+                                        
                                         <a href="{{route('customer.product',$product['product_id'])}}" class="view-details-link"><i class="fa fa-link"></i> Chi tiết</a>
                                     </div>
                                 </div>
@@ -229,3 +232,28 @@
         </div>
     </div> <!-- End product widget area -->
 @endsection('content')
+@section('script2')
+    <script>
+        $(document).ready(function(){
+
+            $('.add-to-cart-link').click(function(event){
+                event.preventDefault();
+                var id = $(this).data('id');
+                var url = "{{route('customer.cart.add')}}";
+                var _token = $('input[name="_token"]').val();
+                    $.ajax({
+                        url: url,
+                        method: "post",
+                        data: {id:id, _token:_token},
+                        success: function(data){
+                            console.log(data);
+                            $('#quantity').html(data);
+                            
+                        },
+                    });
+        
+            });
+            
+        });
+    </script>
+@endsection('script2')
