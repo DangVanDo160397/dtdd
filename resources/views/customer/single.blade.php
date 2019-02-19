@@ -88,7 +88,7 @@
                     </div>
                     @else
             		<button class="button red dathang" id="btnModal" data-price="{{$product->price}}" data-toggle="modal" data-target="#exampleModal"><strong style="font-size: 20px">ĐẶT HÀNG </strong></button>
-                    <a href="{{route('customer.cart.add',$product->product_id)}}">
+                    <a style="background: none" href="{{route('customer.cart.add',$product->product_id)}}" class="add_to_cart_button" data-id="{{$product->product_id}}">
                     <button class="button red giohang" id="btnModal" data-price="{{$product->price}}" data-toggle="modal" ><strong style="font-size: 20px">Thêm vào giỏ hàng </strong></button>
                     </a>
                     @endif
@@ -195,3 +195,29 @@
    	});
    </script>
 @endsection('script')
+
+@section('script2')
+    <script>
+        $(document).ready(function(){
+
+            $('.add_to_cart_button').click(function(event){
+                event.preventDefault();
+                var id = $(this).data('id');
+                var url = "{{route('customer.cart.add')}}";
+                var _token = $('input[name="_token"]').val();
+                    $.ajax({
+                        url: url,
+                        method: "post",
+                        data: {id:id, _token:_token},
+                        success: function(data){
+                            console.log(data);
+                            $('#quantity').html(data);
+                            
+                        },
+                    });
+        
+            });
+            
+        });
+    </script>
+@endsection('script2')
