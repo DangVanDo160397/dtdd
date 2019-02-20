@@ -56,7 +56,7 @@
 
 						<div class="alert alert-danger" style="margin-top: 40px;">
 							Đặt hàng thành công, mã đơn hàng của bạn là: <strong>{{ session('alert')}}</strong> 
-							<p><a href="{{route('customer.index')}}">Tiếp tục mua hàng?</a><a href="{{route('customer.index')}}">&nbsp;&nbsp;Quản lý đơn hàng</a></p>
+							<p><a href="{{route('customer.index')}}">Tiếp tục mua hàng?</a><a href="{{route('customer.profile.index')}}">&nbsp;&nbsp;Quản lý đơn hàng</a></p>
 						</div>
 
 
@@ -75,3 +75,4 @@
 		</div>
 	</div>
 @endsection('content')
+

@@ -247,8 +247,7 @@
                 data: {id:id, _token:_token},
                 success: function(data){
                     console.log(data);
-                    $('#quantity').html(data);
-                    
+                    $('.product-count').html(data); 
                 },
             });
             

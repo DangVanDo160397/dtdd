@@ -26,6 +26,11 @@ i{
             Đăng ký thành công
         </div>
         @endif
+        @if(Session('error'))
+        <div class="alert alert-danger">
+            {{ Session('error')}}
+        </div>
+        @endif
         <form action="{{ route('customer.post.login')}}" method="post">
            {{ csrf_field() }} 
            <div class="form-group">

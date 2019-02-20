@@ -6,11 +6,16 @@
                     <div class="footer-about-us">
                         <h2>Hoàng Hà<span> Mobile</span></h2>
                         <p>Hoanghamobile là một trong những trung tâm mua sắm điện thoại di động hàng đầu tại Hà Nội, với hơn 10 năm phát triển và đội ngũ nhân viên đông đảo cùng hệ thống chi nhánh rộng khắp cả nước.</p>
+                        <style>
+                            .footer-social>a{
+                                padding-left: 10px;
+                            }
+                        </style>
                         <div class="footer-social">
-                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>

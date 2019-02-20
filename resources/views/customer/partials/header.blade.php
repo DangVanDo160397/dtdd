@@ -112,7 +112,7 @@
                 @if(Auth::guard('customer')->check())
                 <div class="col-sm-3">
                     <div class="shopping-item">
-                        <a href="{{route('customer.cart')}}">Cart<i class="fa fa-shopping-cart"></i> <span class="product-count">@if(Session::has('cart'))<span id="quantity">{{Session('cart')->totalQuantity}}</span>@else 0 @endif</span></a>
+                        <a href="{{route('customer.cart')}}">Cart<i class="fa fa-shopping-cart"></i> <span class="product-count">@if(Session::has('cart')) {{Session('cart')->totalQuantity}} @else 0 @endif</span></a>
                     </div>
                 </div>
                 @endif

@@ -1,5 +1,5 @@
 @extends('admin.layout.app')
-@section('data-title','Trang chủ | Admin')
+@section('title','Trang chủ | Admin')
 @section('content')
 <style>
 	.col-md-3{

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterRequest;
 use Auth;
 use App\Company;
 use App\Customer;
@@ -22,12 +23,14 @@ class UserController extends Controller
         return view('customer.login');
     }
     public function postLogin(Request $request){
-    	$email = $request->email;
+    	   $email = $request->email;
 			$password = $request->password;
 			$remember = isset($request->remember) ? 1:0;
 			if(Auth::guard('customer')->attempt(['email' => $email, 'password' => $password],$remember)){
 				return redirect()->route('customer.index');
-			}
+			}else{
+                return back()->with('error', 'Sai tài khoản hoặc mật khẩu');
+            }
 			return back();
     }
     public function logout(){
@@ -39,9 +42,8 @@ class UserController extends Controller
         return view('customer.register');
     }
 
-    public function postRegister(Request $request){
+    public function postRegister(RegisterRequest $request){
         $request->merge(['password' => bcrypt($request->password),'thumbnail' => '123']);
-        //dd($request->all());
         Customer::Create($request->all());
         return redirect()->route('customer.get.login')->with('alert','Đăng ký thành công');
     }
