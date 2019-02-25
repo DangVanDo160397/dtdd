@@ -43,6 +43,7 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
+        $slug = str_slug($request->name,'-');
         Company::create($request->all());
         return redirect()->route('admin.company.index');
     }
@@ -67,6 +68,7 @@ class CompanyController extends Controller
     public function edit($id)
     { 
           $listCompany = Company::findOrFail($id); 
+
         return view('admin.company.edit',compact('listCompany'));
     }
 
@@ -80,7 +82,8 @@ class CompanyController extends Controller
     public function update(Request $request, $id)
     {
          $company = Company::findOrFail($id);
-         $company->update($request->all());
+         $slug = str_slug($request->name,'-');
+         $company->update(['name' => $request->name, 'slug' => $slug]);
           return redirect()->route('admin.company.index');
         //echo 'string';
     }

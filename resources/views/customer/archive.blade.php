@@ -29,7 +29,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="single-shop-product" style="text-align: center; cursor: pointer;">
                         <div class="product-upper">
-                            <a href="{{route('customer.product',$product->product_id)}}"><img src="{{asset('storage/'.$product['thumbnail'])}}" alt=""></a>
+                            <a href="{{route('customer.product',$product->slug)}}"><img src="{{asset('storage/'.$product['thumbnail'])}}" alt=""></a>
                         </div>
                         <h2><a href="">{{$product['name']}}</a></h2>
                         <div class="product-carousel-price">

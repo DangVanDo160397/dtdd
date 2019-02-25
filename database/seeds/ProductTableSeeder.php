@@ -15,6 +15,7 @@ class ProductTableSeeder extends Seeder
         DB::table('products')->insert(
             [
             'name' => 'Apple iPhone X - 64GB',
+            'slug' => 'apple-iphone-X-64GB',
             'thumbnail' => 'product/AxY5MslzbCwCQRmox3Lm7Mnf0OPByDaLo71xs3U9.jpeg',
             'price' => '12750000',
             'screen_size' => '5,5 inch',

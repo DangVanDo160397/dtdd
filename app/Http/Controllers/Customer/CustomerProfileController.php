@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Customer;
 
+use NguyenManh1997\LaravelVietNamDatabase\Models\District;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
@@ -20,6 +21,8 @@ class CustomerProfileController extends Controller
 
     public function index()
     {
+       // $test = District::first();
+        //dd($test->name);
         $customer = Customer::findOrFail(Auth::guard('customer')->user()->id);
         return view('customer.profile.index',compact('customer'));
     }
@@ -54,7 +57,8 @@ class CustomerProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        return view('customer.profile.show',compact('customer'));
     }
 
     /**

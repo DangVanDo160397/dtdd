@@ -184,7 +184,6 @@
 			 	var product = $(this).data('product');
 			 	var cat = $(this).data('cat');
 			 	$('#name').val(product.name);
-			 	// console.log($('#name').val(product.name));
 		 		$('#price').val(product.price.toLocaleString('de-DE')+" đ");
 		 		$('#screen').val(product.screen_size+" px");
 		 		$('#thumbnail').attr("src","{{asset('')}}"+"storage/"+product.thumbnail);

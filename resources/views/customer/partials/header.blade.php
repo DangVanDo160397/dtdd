@@ -58,8 +58,8 @@
                         <ul>
                             <li><a href="#"><i class="fa fa-user"></i> Trả góp 0%</a></li>
                             <li><a href="#"><i class="fa fa-heart"></i> So sánh sản phẩm</a></li>
-                            <li><a href="cart.html"><i class="fa fa-user"></i> Tin tức</a></li>
-                            <li><a href="checkout.html"><i class="fa fa-user"></i> Tuyển dụng</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i> Tin tức</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i> Tuyển dụng</a></li>
                             <li><a href="#"><i class="fa fa-user"></i> Trung tâm bảo hành</a></li>
                         </ul>
                     </div>
@@ -92,7 +92,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="logo">
-                        <h1><a href="./"><img src="{{asset('frontend/img/logo-text.png')}}"></a></h1>
+                        <h1><a href="{{ route('customer.index') }}"><img src="{{asset('frontend/img/logo-text.png')}}"></a></h1>
                     </div>
                         </div>
                         <div class="col-md-6">
@@ -157,7 +157,6 @@
                         method: "get",
                         data: {key:key, _token:_token},
                         success: function(data){
-                            console.log(data);
                             $('#search_list').fadeIn(); 
                             $('#search_list').html(data);
                         },

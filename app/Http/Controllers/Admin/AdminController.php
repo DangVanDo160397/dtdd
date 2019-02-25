@@ -5,6 +5,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Admin;
+use App\Order;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
@@ -19,7 +20,8 @@ class AdminController extends Controller
 		}
 
 		public function index(){
-			return view('admin.index');
+			$list_order = Order::orderBy('created_at','DESC')->limit(5)->get();
+			return view('admin.index',compact('list_order'));
 		}
 
 		public function error(){

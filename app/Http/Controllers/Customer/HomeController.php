@@ -22,8 +22,8 @@ class HomeController extends Controller
 		
 		return view('customer.index',compact('cate_list','check','product_top_hot','product_top_date','product_random','list_news'));
 	}
-	public function get_product($id){
-		$product = Products::findOrFail($id);
+	public function get_product($slug){
+		$product = Products::where('slug',$slug)->first();
 		return view('customer.single',compact('product'));
 	}
 	public function get_category($category){
@@ -44,6 +44,7 @@ class HomeController extends Controller
 	public function search(Request $request){
 
 		if($request->ajax()){
+			
 			$query = $request->get('key');
 			$list_product = Products::where('name','LIKE','%'.$query.'%')->limit(5)->get();
 			if(count($list_product)>0){

@@ -22,6 +22,7 @@ class UserController extends Controller
         }
         return view('customer.login');
     }
+
     public function postLogin(Request $request){
     	   $email = $request->email;
 			$password = $request->password;
@@ -33,6 +34,7 @@ class UserController extends Controller
             }
 			return back();
     }
+    
     public function logout(){
     	Auth::guard('customer')->logout();
     	return redirect()->route('customer.index');

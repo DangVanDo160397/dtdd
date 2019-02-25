@@ -163,7 +163,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        // NguyenManh1997\VietNam\VietNamServiceProvider::class,
         /*
          * Package Service Providers...
          */

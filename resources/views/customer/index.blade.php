@@ -89,7 +89,7 @@
                                         {{csrf_field()}}
                                     </a>
                                     
-                                    <a href="{{route('customer.product',$product['product_id'])}}" class="view-details-link"><i class="fa fa-link"></i> Chi tiết</a>
+                                    <a href="{{route('customer.product',$product['slug'])}}" class="view-details-link"><i class="fa fa-link"></i> Chi tiết</a>
                                 </div>
                             </div>
                             
@@ -241,13 +241,22 @@
             var id = $(this).data('id');
             var url = "{{route('customer.cart.add')}}";
             var _token = $('input[name="_token"]').val();
+            var html = '';
             $.ajax({
                 url: url,
                 method: "post",
+                dataType: 'json',
                 data: {id:id, _token:_token},
                 success: function(data){
                     console.log(data);
-                    $('.product-count').html(data); 
+                     $('.product-count').html(data); 
+
+
+                    // 
+                    // $.each(data,function(index, value){
+
+                    //     console.log(value.item);
+                    // });
                 },
             });
             

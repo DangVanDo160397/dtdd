@@ -20,7 +20,7 @@ class CreateCustomersTable extends Migration
             $table->binary('gender');
             $table->string('address');
             $table->integer('phone');
-            $table->string('email')->unique();
+            $table->string('email',100)->unique();
             $table->date('birthday');
             $table->string('thumbnail');
             $table->rememberToken();

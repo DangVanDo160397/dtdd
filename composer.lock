@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f2120fa77d42a42b4210cdbe1c114e2",
+    "content-hash": "ffa40826ba5c5441f09bbbe2a397b1e7",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -868,6 +868,54 @@
                 "time"
             ],
             "time": "2018-12-28T10:07:33+00:00"
+        },
+        {
+            "name": "nguyenmanh1997/laravel-vietnam-database",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nguyenmanh1997/laravel-vietnam-database.git",
+                "reference": "05be030bd857f75155e613b63378e160924a985e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nguyenmanh1997/laravel-vietnam-database/zipball/05be030bd857f75155e613b63378e160924a985e",
+                "reference": "05be030bd857f75155e613b63378e160924a985e",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "NguyenManh1997\\LaravelVietNamDatabase\\VietNamServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NguyenManh1997\\LaravelVietNamDatabase\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nguyen Manh",
+                    "email": "nguyenmanh0397@gmail.com"
+                }
+            ],
+            "description": "database Viet Nam",
+            "homepage": "https://github.com/nguyenmanh1997",
+            "keywords": [
+                "NguyenManh",
+                "vietnam"
+            ],
+            "time": "2018-11-04T06:30:26+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -4054,7 +4102,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "nguyenmanh1997/laravel-vietnam-database": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -166,33 +166,32 @@
 @endsection('content')
 @section('script')
 <script>
-   	$(document).ready(function(){
-   		var sl = parseInt($('#total').html());
-   		$('#btnModal').click(function(){
-   			var price = parseInt($(this).data('price'));
+    $(document).ready(function(){
+        var sl = parseInt($('#total').html());
+        $('#btnModal').click(function(){
+            var price = parseInt($(this).data('price'));
             parseInt($('#totalPrice').val(sl*price));
             parseInt($('#totalQty').val(sl));
-   			// giảm số lượng
-   			$('#down').click(function(){	
-   				if(sl>1){
-   					sl--;
-   					parseInt($('#price').html((sl*price).toLocaleString('en-US')));
+            // giảm số lượng
+            $('#down').click(function(){    
+                if(sl>1){
+                    sl--;
+                    parseInt($('#price').html((sl*price).toLocaleString('en-US')));
                     parseInt($('#total').html(sl));
-   					parseInt($('#totalPrice').val(sl*price));
+                    parseInt($('#totalPrice').val(sl*price));
                     parseInt($('#totalQty').val(sl));
-
-   				}			
-   			});
-   			// tăng số luọng
-   			$('#up').click(function(){	
-   				sl++;
-   				parseInt($('#price').html((sl*price).toLocaleString('en-US')));
-   				parseInt($('#total').html(sl));
+                }           
+            });
+            // tăng số luọng
+            $('#up').click(function(){  
+                sl++;
+                parseInt($('#price').html((sl*price).toLocaleString('en-US')));
+                parseInt($('#total').html(sl));
                 parseInt($('#totalPrice').val(sl*price));
                 parseInt($('#totalQty').val(sl));
-   			});
-   		});
-   	});
+            });
+        });
+    });
    </script>
 @endsection('script')
 

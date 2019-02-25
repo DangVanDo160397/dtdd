@@ -26,7 +26,9 @@ class CartController extends Controller
             $cart = new Cart($oldCart);
             $cart->addItem($product,$id);
             $request->session()->put('cart',$cart);
-            echo $cart->totalQuantity;         
+
+            echo $cart->totalQuantity;
+             // print_r(json_encode( $cart->items )) ;         
         }
 
     }

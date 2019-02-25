@@ -39,14 +39,11 @@ class OrderCustomerController extends Controller
 		public function orderProduct(Request $request){
 
 			$product_detail = Products::findOrFail($request->product_id);
-			// dd($product_detail);
 			$info[$request->product_id] = [
 				'qty' => $request->totalQty,
 				'price' => $request->totalPrice,
 				'item' => $product_detail,
 			];
-			//dd($info);
-			//dd(json_encode( $info ));
 			date_default_timezone_set('asia/ho_chi_minh');
 					$order = [
 						'order_code' => str_random(10),

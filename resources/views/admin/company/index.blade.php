@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="col-md-6">
 		<div style="margin-bottom: 5px;">
-			<a href="{{ route('admin.company.create')}}" class="btn btn-primary">Thêm mới</a>
+			<!-- 	<a href="{{ route('admin.company.create')}}" class="btn btn-primary">Thêm mới</a> -->
 		</div>
 		<div class="panel panel-primary">
 			<div class="panel panel-heading">Quản lý danh mục</div>

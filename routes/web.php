@@ -59,7 +59,7 @@ Route::group([],function(){
 
 	Route::get('/','Customer\HomeController@index')->name('customer.index');
 	Route::get('/{category}','Customer\HomeController@get_category')->name('customer.category');
-	Route::get('/product/{id}','Customer\HomeController@get_product')->name('customer.product');
+	Route::get('/product/{slug}','Customer\HomeController@get_product')->name('customer.product');
 	Route::get('/search','Customer\HomeController@search')->name('customer.search');
 
 	// User sau khi đăng nhập

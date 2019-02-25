@@ -27,7 +27,7 @@ class Cart extends Model
     		}
     	}
     	$giohang['qty']++; //số lượng mặt hàng ++
-    	$giohang['price'] = $item->price * $giohang['qty'];
+    	$giohang['price'] = $item->price;
 
     	// gán lại vào giỏ hàng
     	$this->items[$id] = $giohang;
@@ -36,13 +36,15 @@ class Cart extends Model
     }
 
     public function removeItem($id){
-    	$this->items[$id]['qty']--;
-    	$this->items[$id]['price'] -= $this->items[$id]['item']['price'];
+    	//$this->items[$id]['qty']--;
+    	//$this->items[$id]['price'] -= $this->items[$id]['item']['price'];
 
-    	$this->totalQuantity--;
-    	$this->totalPrice -= $this->items[$id]['item']['price'];
-    	if($this->items[$id]['qty']<=0){
+        $this->totalPrice -= $this->items[$id]['price'];
+        $this->totalQuantity -= $this->items[$id]['qty'];
+    	
+    	
+    	//if($this->items[$id]['qty']<=0){
     		unset($this->items[$id]);
-    	}
+    	//}
     }
 }

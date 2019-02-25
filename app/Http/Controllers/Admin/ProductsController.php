@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-// use App\Http\Requests\ProductRequest;
+ use App\Http\Requests\ProductRequest;
 use App\Products;
 use App\Company;
 use App\Http\Controllers\Controller;
@@ -38,10 +38,11 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         
         $product = $request->except('thumbnail');
+        $product['slug'] = str_slug($request->name,'-');
         //upload thumbnail
          $allow_type = ["jpg","jpeg","png","svg","png","gif"];
          if($request->hasFile('thumbnail')){
@@ -53,7 +54,7 @@ class ProductsController extends Controller
             }
         }
         Products::create($product);
-        return redirect()->route('admin.product.index');
+        return redirect()->route('admin.product.index')->with('alert','Thêm sản phẩm thành công');
     }
 
     /**
@@ -88,7 +89,7 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
         
         $list_product = Products::findOrFail($id);
@@ -96,6 +97,7 @@ class ProductsController extends Controller
         $request->merge(['status' => $check]);
 
         $product = $request->except('thumbnail');
+        $product['slug'] = str_slug($request->name,'-');
         //upload thumbnail
          $allow_type = ["jpg","jpeg","png","svg","png","gif"];
          if($request->hasFile('thumbnail')){
@@ -109,7 +111,7 @@ class ProductsController extends Controller
             }
         }
         $list_product->update($product);
-        return redirect()->back();
+        return redirect()->route('admin.product.index')->with('alert','Sửa sản phẩm thành công');;
     }
 
     /**

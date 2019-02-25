@@ -7,14 +7,14 @@
 				<p>Hello, {{ $customer->name}}</p>
 				<h4>Quản lý tài khoản</h4>
 				<ul>
-					<li><a href="{{ route('customer.profile.show',Auth::guard('customer')->user()->id) }}">Thông tin tài khoản</a></li>
-					<li><a href="#">Địa chỉ mua hàng</a></li>
-					<li><a href="#">Hình thức thanh toán</a></li>
+					<li><a href="">Thông tin tài khoản</a></li>
+					<li><a href="">Địa chỉ mua hàng</a></li>
+					<li><a href="">Hình thức thanh toán</a></li>
 				</ul>
 				<h4>Quản lý đơn hàng</h4>
 				<ul>
-					<li><a href="#">Đơn hàng đã đặt</a></li>
-					<li><a href="#">Đơn hàng đang đặt</a></li>
+					<li><a href="">Đơn hàng đã đặt</a></li>
+					<li><a href="">Đơn hàng đang đặt</a></li>
 				</ul>
 				<h4><a href="{{route('customer.cart')}}">Giỏ hàng</a></h4>
 			</div>

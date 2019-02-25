@@ -80,11 +80,9 @@
 			<div class="row">
         <p class="data-title" style="color:#444444; font-size: 32px">Hoạt động mới nhất</p>
         <ul class="activity">
-          <li><p>[22:00 - 20/9/2017] Đã thêm 1 sản phẩm mới: <a href="#">jnkAej3ff</a></p></li>
-          <li><p>[22:00 - 20/9/2017] Đã thêm 1 sản phẩm mới: <a href="#">jnkAej3ff</a></p></li>
-          <li><p>[22:00 - 20/9/2017] Đã thêm 1 sản phẩm mới: <a href="#">jnkAej3ff</a></p></li>
-          <li><p>[22:00 - 20/9/2017] Đã thêm 1 sản phẩm mới: <a href="#">jnkAej3ff</a></p></li>
-          <li><p>[22:00 - 20/9/2017] Đã thêm 1 sản phẩm mới: <a href="#">jnkAej3ff</a></p></li>  
+          @foreach($list_order as $order)
+          <li><p>[{{ date('H:i - d/m/Y',strtotime($order->order_date)) }}] Có một đơn hàng mới <a href="{{ route('admin.order.show',$order->id) }}">{{ $order->order_code }}</a></p></li>
+          @endforeach
         </ul>
 			</div>
   </div>

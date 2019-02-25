@@ -5,6 +5,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Products::class, function (Faker $faker) {
     return [
         'name' => $faker->bothify('SamSung ##??'),
+        'slug' => str_slug($faker->bothify('SamSung ##??'),'-'),
         'thumbnail' => 'product/AxY5MslzbCwCQRmox3Lm7Mnf0OPByDaLo71xs3U9.jpeg',   
         'screen_size' => $faker->randomElement($array = array ('5','5.2','5.5','5.7','6','6.2')),
         'price' => $faker->numberBetween($min = 2000000, $max = 10000000),
