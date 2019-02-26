@@ -47,13 +47,13 @@
 							<td><?php echo ++$stt ?></td>
 							<td>
 								<div class="image" style="width: 100px;height: auto">
-									<img src="{{asset($product->thumbnail)}}" alt="" style="width: 100%;">
+									<img src="{{ asset('storage/'.$product->thumbnail)}}" alt="" style="width: 100%;">
 								</div>
 							</td>
 							<td>{{$product->name}}</td>
 							<td>{{$product->category->name}}</td>
 							<td>{{$product->price}}</td>
-							<td>@if($product->status == 1) <span class="glyphicon glyphicon-ok"></span>@endif</td>
+							<td>@if($product->status == 1) <i class="fas fa-check"></i>@endif</td>
 							<td>
 								<a href="#" class="open-modal" data-toggle="modal" data-cat="{{$product->category->name}}" data-product ="{{ $product->toJson()}}" data-target="#myModal">Xem chi tiết</a>
 								<!-- Modal -->
@@ -65,66 +65,76 @@
 												<div class="panel panel-primary">
 													<div class="panel panel-heading">Chi tiết sản phẩm</div>
 													<div class="panel panel-body">
-														<div class="form-group">
-															<div class="row">
-																<div class="col-md-6"><strong>Tên</strong></div>
-																<div class="col-md-6"><strong>Giá</strong></div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="thumbnail">
+																	<img src="{{asset('storage/'.$product->thumbnail)}}" id="thumbnail" alt="" style="width: 100%;">
+																</div>
 															</div>
-															<div class="row">
-																<div class="col-md-6"><input type="text" id="name" value="" disabled class="form-control"></div>
-																<div class="col-md-6"><input type="text" id="price" value="" disabled class="form-control"></div>
+															<div class="col-md-6">
+																<div class="form-group">
+																	<div class="row">
+																		<div class="col-md-6"><strong>Tên</strong></div>
+																		<div class="col-md-6"><strong>Giá</strong></div>
+																	</div>
+																	<div class="row">
+																		<div class="col-md-6"><input type="text" id="name" value="" disabled class="form-control"></div>
+																		<div class="col-md-6"><input type="text" id="price" value="" disabled class="form-control"></div>
+																	</div>
+																</div>
+
+																<div class="form-group">
+																	<div class="row">
+																		<div class="col-md-6"><strong>Kích thước màn hình</strong></div>
+																		<div class="col-md-6"><strong>Hệ điều hành</strong></div>
+																	</div>
+																	<div class="row">
+																		<div class="col-md-6"><input type="text" id="screen" value="{{$product->screen_size}}" disabled class="form-control"></div>
+																		<div class="col-md-6"><input type="text" id="OP" value="{{$product->operating_system}}" disabled class="form-control"></div>
+																	</div>
+																</div>
+
+																<div class="form-group">
+																	<div class="row">
+																		<div class="col-md-6"><strong>CPU</strong></div>
+																		<div class="col-md-6"><strong>RAM</strong></div>
+																	</div>
+																	<div class="row">
+																		<div class="col-md-6"><input type="text" id="CPU" value="{{$product->cpu}}" disabled class="form-control"></div>
+																		<div class="col-md-6"><input type="text" id="RAM" value="{{$product->ram}}" disabled class="form-control"></div>
+																	</div>
+																</div>
+
+																<div class="form-group">
+																	<div class="row">
+																		<div class="col-md-6"><strong>Camera</strong></div>
+																		<div class="col-md-6"><strong>Bộ nhớ</strong></div>
+																	</div>
+																	<div class="row">
+																		<div class="col-md-6"><input type="text" id="Cam" value="{{$product->camera}}" disabled class="form-control"></div>
+																		<div class="col-md-6"><input type="text" id="Mem" value="{{$product->memories}}" disabled class="form-control"></div>
+																	</div>
+																</div>
+
+																<div class="form-group">
+																	<div class="row">
+																		<div class="col-md-6"><strong>Pin</strong></div>
+																		<div class="col-md-6"><strong>Hãng</strong></div>
+																	</div>
+																	<div class="row">
+																		<div class="col-md-6"><input type="text" id="Pin" value="{{$product->pin}}" disabled class="form-control"></div>
+																		<div class="col-md-6"><input type="text" id="Company" value="{{$product->category->name}}" disabled class="form-control"></div>
+																	</div>
+																</div>
+																<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 															</div>
+															
 														</div>
 
-														<div class="form-group">
-															<div class="row">
-																<div class="col-md-6"><strong>Kích thước màn hình</strong></div>
-																<div class="col-md-6"><strong>Hệ điều hành</strong></div>
-															</div>
-															<div class="row">
-																<div class="col-md-6"><input type="text" id="screen" value="{{$product->screen_size}}" disabled class="form-control"></div>
-																<div class="col-md-6"><input type="text" id="OP" value="{{$product->operating_system}}" disabled class="form-control"></div>
-															</div>
-														</div>
-
-														<div class="form-group">
-															<div class="row">
-																<div class="col-md-6"><strong>CPU</strong></div>
-																<div class="col-md-6"><strong>RAM</strong></div>
-															</div>
-															<div class="row">
-																<div class="col-md-6"><input type="text" id="CPU" value="{{$product->cpu}}" disabled class="form-control"></div>
-																<div class="col-md-6"><input type="text" id="RAM" value="{{$product->ram}}" disabled class="form-control"></div>
-															</div>
-														</div>
-
-														<div class="form-group">
-															<div class="row">
-																<div class="col-md-6"><strong>Camera</strong></div>
-																<div class="col-md-6"><strong>Bộ nhớ</strong></div>
-															</div>
-															<div class="row">
-																<div class="col-md-6"><input type="text" id="Cam" value="{{$product->camera}}" disabled class="form-control"></div>
-																<div class="col-md-6"><input type="text" id="Mem" value="{{$product->memories}}" disabled class="form-control"></div>
-															</div>
-														</div>
-
-														<div class="form-group">
-															<div class="row">
-																<div class="col-md-6"><strong>Pin</strong></div>
-																<div class="col-md-6"><strong>Hãng</strong></div>
-															</div>
-															<div class="row">
-																<div class="col-md-6"><input type="text" id="Pin" value="{{$product->pin}}" disabled class="form-control"></div>
-																<div class="col-md-6"><input type="text" id="Company" value="{{$product->category->name}}" disabled class="form-control"></div>
-															</div>
-														</div>
 													</div>
 												</div>
 											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-											</div>
+											
 										</div>
 
 									</div>
@@ -134,15 +144,16 @@
 								<form action="{{route('admin.product.destroy',$product->product_id)}}" method="post">
 									{{ csrf_field()}}
 									{{method_field('DELETE')}}
-									<input type="submit" value="Xóa" class="btn btn-danger" ">
+									<input type="submit" value="Xóa" class="btn btn-danger" onclick="window.confirm('Bạn có chắc chắn muốn xóa?')">
 								</form>
 							</td>
 						</tr>
 					<?php } ?>
 					<div class="row">
 						<div class="col-md-6">
-							<!-- {{ $list_products->links()}} -->
 							{{ $list_products->appends(request()->except('page'))->links()}}
+
+							<!-- {{ $list_products->appends(request()->except('page'))->links()}} -->
 						</div>
 						<div class="col-md-6" style="margin-top: 15px">
 							<form role="search" action="{{route('admin.product.search')}}" method="get">
@@ -163,6 +174,9 @@
 	</div>
 </div>
 
+
+@endsection('content')
+@section('script')
 <script>
 	
 	$(document).ready(function(){
@@ -172,6 +186,7 @@
 			 	$('#name').val(product.name);
 		 		$('#price').val(product.price.toLocaleString('de-DE')+" đ");
 		 		$('#screen').val(product.screen_size+" px");
+		 		$('#thumbnail').attr("src","{{asset('')}}"+"storage/"+product.thumbnail);
 		 		$('#OP').val(product.operating_system);
 		 		$('#CPU').val(product.cpu);
 		 		$('#Mem').val(product.memories +"GB");
@@ -180,4 +195,4 @@
 		});
 	});
 </script>
-@endsection('content')
+@endsection(script)

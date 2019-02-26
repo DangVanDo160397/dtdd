@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -48,15 +49,31 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if($exception instanceof NotFoundHttpException)
-        {
-            return response()->view('errors.503', [], 404);
-        }
-        else if ($exception instanceof ModelNotFoundException)
-        {
-        // Do your stuff here
-            return response()->view('errors.503', [], 404); 
-        }
+        // if($exception instanceof NotFoundHttpException)
+        // {
+        //     return response()->view('errors.503', [], 404);
+        // }
+        // else if ($exception instanceof ModelNotFoundException)
+        // {
+        // // Do your stuff here
+        //     return response()->view('errors.503', [], 404); 
+        // }
         return parent::render($request, $exception);
+    }
+
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if($request->expectsJson()) {
+            return response()->json(['message' => $exception->getMessage()], 401);
+        }
+
+        $guards = $exception->guards();
+        $firstGuard = array_get($guards, 0);
+        switch($firstGuard) {
+            case 'admin':
+                return redirect('admin/login');
+            default:
+                return redirect('/login');
+        }
     }
 }

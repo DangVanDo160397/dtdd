@@ -1,5 +1,5 @@
 @extends('admin.layout.app')
-@section('title','Thêm mới sản phẩm')
+@section('title','Sửa sản phẩm')
 @section('content')
 <div class="row">
 	<div class="col-md-12">
@@ -14,6 +14,7 @@
 				<form action="{{route('admin.product.update',$list_product->product_id)}}" method="post" enctype="multipart/form-data">
 					{{csrf_field()}}
 					{{method_field('PUT')}}
+					<input type="hidden" value="{{$list_product->product_id}}" name="id" class="form-control">
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-6">	

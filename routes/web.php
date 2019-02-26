@@ -74,6 +74,10 @@ Route::group([],function(){
 		Route::post('/order','Customer\OrderCustomerController@orderCart')->name('customer.post.order');
 		Route::post('/orderproduct','Customer\OrderCustomerController@orderProduct')->name('customer.product.order');
 
+		Route::get('profile/address','Customer\CustomerProfileController@get_address')->name('customer.get.address');
+		Route::post('profile/address/province','Customer\CustomerProfileController@post_address_province')->name('customer.post.address');
+		Route::post('profile/address/district','Customer\CustomerProfileController@post_address_district')->name('customer.post.district');
+		Route::post('profile/address/change/{id}','Customer\CustomerProfileController@change_address')->name('customer.change.address');
 		Route::resource('profile','Customer\CustomerProfileController',['as' => 'customer']);
 	});
 

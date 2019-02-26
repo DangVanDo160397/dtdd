@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
             $table->string('camera');
             $table->string('memories');
             $table->string('pin');
-            $table->binary('status')->nullalbe();
+            $table->binary('status')->nullable();
             $table->integer('cat_id')->unsigned();
             $table->foreign('cat_id')->references('company_id')->on('company')->onDelete('cascade');
             $table->timestamps();

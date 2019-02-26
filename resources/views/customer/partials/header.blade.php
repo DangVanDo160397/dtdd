@@ -74,10 +74,6 @@
                                     <a class="dropdown-toggle" href="{{route('customer.profile.index')}}">Xin chào: <span class="key">{{$user->name}}</span></a>&nbsp;&nbsp;&nbsp;
                                     <a class="dropdown-toggle" href="{{route('customer.logout')}}">Đăng xuất <span class="key"></span></a>
                                 @endif
-
-                           <!--  <li class="dropdown dropdown-small">
-                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">Đăng nhập</span></a>
-                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -97,8 +93,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="search-container">
-                        <form action="/action_page.php" method="get" style="position: relative;">
-                          {{ csrf_field() }}
+                        <form action="" method="get" style="position: relative;">
+                          
                           <input type="text" placeholder="Nhập từ khóa tìm kiếm.." value="" name="search" id="search">
                           <button type="submit">Tìm kiếm</button>
                           <div id="search_list"><br>

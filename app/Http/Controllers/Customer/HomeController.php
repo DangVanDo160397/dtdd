@@ -51,9 +51,10 @@ class HomeController extends Controller
 				$data = '<ul class="dropdown-menu" style="display:block; position:absolute">';
 				foreach($list_product as $product){
 
-					$data .= "<li><a href='product/".$product->product_id."'>";
+
+					$data .= "<li><a href='".url('product/'.$product->slug)."'>";
 					$data .= '<img src=" ';
-					$data .= 'storage/'.$product->thumbnail. '" />';
+					$data .= url('storage/'.$product->thumbnail). '" />';
 					$data .= "<p>".$product->name."</p>";
 					$data .= "<span>".number_format($product->price)." đ</span>";
 					$data .= "</li><a/>";

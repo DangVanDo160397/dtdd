@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class ProductRequest extends FormRequest
 {
@@ -46,9 +47,10 @@ class ProductRequest extends FormRequest
             'numeric' => ':attribute phải là số',
         ];
     }
-    public function rules()
+    public function rules(Request $request)
     {
-        return [
+        $id = $request->id;
+        $rule = [
             'name' => 'required|min:6|max:255',
             'price' => 'required|numeric|min:1',
             'screen_size' => 'required|min:1',
@@ -58,9 +60,13 @@ class ProductRequest extends FormRequest
             'camera' => 'required',
             'memories' => 'required',
             'pin' => 'required',
-            'status' => 'required',
             'cat_id' => 'required',
             'thumbnail' => 'required',
         ];
+
+        if($id != null){
+            $rule['thumbnail'] = '';
+        }
+        return $rule;
     }
 }

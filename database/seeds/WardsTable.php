@@ -12,7 +12,7 @@ class WardsTable extends Seeder
      */
     public function run()
     {
-    	\DB::table('wards')->truncate();
+    	// \DB::table('wards')->truncate();
         Ward::create( [
 		'ward_id'=>'00001',
 		'name'=>'Phúc Xá',

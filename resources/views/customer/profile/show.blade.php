@@ -8,7 +8,7 @@
 				<h4>Quản lý tài khoản</h4>
 				<ul>
 					<li><a href="{{ route('customer.profile.show',Auth::guard('customer')->user()->id) }}">Thông tin tài khoản</a></li>
-					<li><a href="#">Địa chỉ mua hàng</a></li>
+					<li><a href="{{ route('customer.get.address') }}">Địa chỉ mua hàng</a></li>
 					<li><a href="#">Hình thức thanh toán</a></li>
 				</ul>
 				<h4>Quản lý đơn hàng</h4>
@@ -19,33 +19,45 @@
 				<h4><a href="{{route('customer.cart')}}">Giỏ hàng</a></h4>
 			</div>
 			<div class="col-md-9">
+				@if(session('alert'))
+				<div class="alert alert-danger" style="margin-top: 40px;">
+					<strong>OK! </strong> {{ session('alert')}}
+				</div>
+				@endif
 				<h3>Thông tin tài khoản</h3>
-				<table class="table table-bordered table-striped">
-					<tr>
-						<th>Mã đơn hàng</th>
-						<th>Ngày đặt</th>
-						<th>Số lượng</th>
-						<th>Tổng tiền</th>
-						<th>Tình trạng</th>
-						<th>Quản lý</th>
-					</tr>
-					@foreach($customer->order as $order)
-					<tr>
-						<td><strong>{{$order->order_code}}</strong></td>
-						<td>{{date('H:i, d-m-Y', strtotime($order->order_date))}}</td>
-						<td>{{$order->count}}</td>
-						<td>{{number_format($order->total)}} đ</td>
-						<td>
-							@if($order->status == 1)
-								<span style="color:red">Chưa nhận</span>
-							@else
-								<span style="color:green">Đã nhận</span>
-							@endif
-						</td>
-						<td><a href="#">Chi tiết đơn hàng</a></td>
-					</tr>
-					@endforeach
-				</table>
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col-md-6"><strong>Tên</strong></div>
+						<div class="col-md-6"><strong>Giới tính</strong></div>
+					</div>
+					<div class="row">
+						<div class="col-md-6"><input type="text" id="screen" value="{{$customer->name}}" disabled class="form-control"></div>
+						<div class="col-md-6"><input type="text" id="OP" value="{{$customer->gender==1?'Nam':'Nữ'}}" disabled class="form-control"></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col-md-6"><strong>Số điện thoại</strong></div>
+						<div class="col-md-6"><strong>Email</strong></div>
+					</div>
+					<div class="row">
+						<div class="col-md-6"><input type="text" id="screen" value="{{$customer->phone}}" disabled class="form-control"></div>
+						<div class="col-md-6"><input type="text" id="OP" value="{{$customer->email}}" disabled class="form-control"></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col-md-6"><strong>Ngày sinh</strong></div>
+						<div class="col-md-6"><strong>Địa chỉ</strong></div>
+					</div>
+					<div class="row">
+						<div class="col-md-6"><input type="text" id="screen" value="{{date('d-m-Y',strtotime($customer->birthday))}}" disabled class="form-control"></div>
+						<div class="col-md-6"><input type="text" id="OP" value="{{$customer->address}}" disabled class="form-control"></div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

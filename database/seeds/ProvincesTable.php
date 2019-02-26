@@ -13,7 +13,7 @@ class ProvincesTable extends Seeder
     public function run()
     {
         
-    	\DB::table('provinces')->truncate();
+    	// \DB::table('provinces')->truncate();
 		Province::create( [
 		'province_id'=>'01',
 		'name'=>'Hà Nội',

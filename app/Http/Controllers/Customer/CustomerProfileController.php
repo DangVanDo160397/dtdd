@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Customer;
 
+use NguyenManh1997\LaravelVietNamDatabase\Models\Province;
 use NguyenManh1997\LaravelVietNamDatabase\Models\District;
+use NguyenManh1997\LaravelVietNamDatabase\Models\Ward;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
@@ -21,8 +23,6 @@ class CustomerProfileController extends Controller
 
     public function index()
     {
-       // $test = District::first();
-        //dd($test->name);
         $customer = Customer::findOrFail(Auth::guard('customer')->user()->id);
         return view('customer.profile.index',compact('customer'));
     }
@@ -69,7 +69,7 @@ class CustomerProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+         
     }
 
     /**
@@ -81,7 +81,10 @@ class CustomerProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        $address = $request->street.", ".$request->ward.", ".$request->district.", ".$request->province;
+        $customer->update(['address' => $address]);
+        return redirect()->route('customer.profile.show',$id)->with('alert',' Cập nhật địa chỉ thành công');   
     }
 
     /**
@@ -93,5 +96,49 @@ class CustomerProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function get_address(){
+
+
+        $provinces = Province::orderBy('name','ASC')->get();
+        $customer = Customer::findOrFail(Auth::guard('customer')->user()->id);
+        return view('customer.profile.address',compact('customer','provinces'));
+    }
+
+    public function post_address_province(Request $request){
+            $html = '<select name="district" id="district" class="form-control"> <option value="">--Lựa chọn--</option>';
+            // $html .= ''
+            if($request->ajax()){
+                $province = $request->post('province');
+                $district = District::where('province_id',$province)->orderBy('name','ASC')->get();
+                foreach ($district as $value) {    
+                    $html .= "<option value=' ".$value->district_id." '> ".$value->name. "</option> ";      
+                }
+                $html .= '</select>';
+                echo $html;
+            }
+            
+    }
+
+    public function post_address_district(Request $request){
+            $html = '<select name="ward" id="ward" class="form-control"> <option value="">--Lựa chọn--</option>';
+            if($request->ajax()){
+                 $district = $request->post('district');
+                 $ward = Ward::where('district_id',$district)->orderBy('name','ASC')->get();
+                foreach ($ward as $value) {    
+                    $html .= "<option value=' ".$value->ward_id." '> ".$value->name. "</option> ";      
+                }
+                $html .= '</select>';
+                echo $html;
+            }
+            
+    }
+
+    public function change_address(Request $request,$id){
+        dd($address);
+        $customer = Customer::findOrFail($id);
+        $address = $request->province.", ".$request->district.", ".$request->ward.", ".$request->street;
+        
     }
 }

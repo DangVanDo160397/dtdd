@@ -8,7 +8,7 @@
 				<h4>Quản lý tài khoản</h4>
 				<ul>
 					<li><a href="{{ route('customer.profile.show',Auth::guard('customer')->user()->id) }}">Thông tin tài khoản</a></li>
-					<li><a href="#">Địa chỉ mua hàng</a></li>
+					<li><a href="{{ route('customer.get.address') }}">Địa chỉ mua hàng</a></li>
 					<li><a href="#">Hình thức thanh toán</a></li>
 				</ul>
 				<h4>Quản lý đơn hàng</h4>

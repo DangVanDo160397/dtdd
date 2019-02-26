@@ -12,7 +12,7 @@ class DistrictsTable extends Seeder
      */
     public function run()
     {
-    	\DB::table('districts')->truncate();
+    	// \DB::table('districts')->truncate();
         District::create( [
 			'district_id'=>'001',
 			'name'=>'Ba Đình',

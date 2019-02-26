@@ -251,12 +251,6 @@
                     console.log(data);
                      $('.product-count').html(data); 
 
-
-                    // 
-                    // $.each(data,function(index, value){
-
-                    //     console.log(value.item);
-                    // });
                 },
             });
             
