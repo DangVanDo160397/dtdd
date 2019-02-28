@@ -9,9 +9,9 @@ use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
-    public function __construct(){
-    	$this->middleware('guest:admin');
-    }
+    // public function __construct(){
+    // 	$this->middleware('guest:admin');
+    // }
     
     public function getLogin(){
     	if(Auth::check()){

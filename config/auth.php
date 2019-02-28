@@ -87,11 +87,6 @@ return [
             'driver' => 'eloquent',
             'model' => App\Customer::class,
         ],
-
-        // 'admin' => [
-        //     'driver' => 'database',
-        //     'table' => 'tbl_admin_users',
-        // ],
     ],
 
     /*

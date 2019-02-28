@@ -24,7 +24,8 @@ class HomeController extends Controller
 	}
 	public function get_product($slug){
 		$product = Products::where('slug',$slug)->first();
-		return view('customer.single',compact('product'));
+		$list_product = Products::where('cat_id',$product->cat_id)->where('slug','!=',$product->slug)->inRandomOrder()->limit(5)->get();
+		return view('customer.single',compact('product','list_product'));
 	}
 	public function get_category($category){
 		$cate_list = Company::where('slug',$category)->get();
@@ -45,18 +46,17 @@ class HomeController extends Controller
 
 		if($request->ajax()){
 			
-			$query = $request->get('key');
+			$query = $request->post('key');
 			$list_product = Products::where('name','LIKE','%'.$query.'%')->limit(5)->get();
 			if(count($list_product)>0){
 				$data = '<ul class="dropdown-menu" style="display:block; position:absolute">';
 				foreach($list_product as $product){
 
-
 					$data .= "<li><a href='".url('product/'.$product->slug)."'>";
 					$data .= '<img src=" ';
 					$data .= url('storage/'.$product->thumbnail). '" />';
 					$data .= "<p>".$product->name."</p>";
-					$data .= "<span>".number_format($product->price)." đ</span>";
+					$data .= "<span style='color:red;font-weight: bold;'>".number_format($product->price)." đ</span>";
 					$data .= "</li><a/>";
 				}
 				$data .= '</ul>';

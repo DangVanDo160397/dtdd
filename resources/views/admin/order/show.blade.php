@@ -68,7 +68,7 @@
 							<td>{{$key}}</td>
 							<td>{{$value['item']['name']}}</td>
 							<td>{{$value['qty']}}</td>
-							<td>{{number_format($value['price'])}} đ</td>
+							<td>{{number_format($value['item']['price'])}} đ</td>
 						</tr>
 						@endforeach
 					</table>

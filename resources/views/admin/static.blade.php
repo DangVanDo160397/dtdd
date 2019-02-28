@@ -39,7 +39,7 @@
   			<div class="content" style="background-color: #1BC98E">
   				<p class="data-title">Sản phẩm</p>
           <ul class="thongke">
-            <li>- Tổng mặt hàng: 69</li>
+            <li>- Tổng số mặt hàng: 69</li>
             <li>- Đã bán: 9</li>
             <li>- Còn lại: 60</li>
           </ul>
@@ -47,11 +47,11 @@
   		</div>
   		<div class="col-md-3" >
   			<div class="content" style="background-color: #E64759">
-  				<p class="data-title">Khách hàng</p>
+  				<p class="data-title">Tin tức</p>
           <ul class="thongke">
-            <li>- Tổng số khách hàng: 69</li>
-            <li>- Số khách ghé thăm: 9</li>
-            <li>- Số khách mua hàng: 60</li>
+            <li>- Tổng số bài viết: 69</li>
+            <li>- Lượt xem: 9</li>
+            <li>- Lượt bình luận: 60</li>
           </ul>
   			</div>
   		</div>
@@ -69,8 +69,8 @@
   			<div class="content" style="background-color: #E4D836;">
   				<p class="data-title">Doanh thu</p>
           <ul class="thongke">
-            <li>- Tổng doanh thu: 69</li>
-            <li>- Doanh thu trong tháng: 9</li>
+            <li>- Tổng thành viên: 69</li>
+            <li>- Khách hàng: 9</li>
             <li>- Ghé thăm: 60</li>
           </ul>
   			</div>

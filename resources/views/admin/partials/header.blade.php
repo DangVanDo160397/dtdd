@@ -26,7 +26,7 @@
                             </ul>
                         </li>
                         @endcan
-                        <li class="sub-menu" id="setting"><a href="{{route('admin.get.index')}}"><i class="fas fa-database"></i>Thống kê</a></li>
+                        <li class="sub-menu" id="setting"><a href="{{route('admin.static')}}"><i class="fas fa-database"></i>Thống kê</a></li>
                         @can("permission",Auth::user())          
                         <li class="sub-menu" id="setting"><a href=""><i class="fa fa-cog"></i>Cài Đặt</a></li>
                         @endcan

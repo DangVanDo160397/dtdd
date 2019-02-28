@@ -34,6 +34,7 @@ class RedirectIfAuthenticated
             return redirect('/admin.404');
         }
 
+
         return $next($request);
     }
 }

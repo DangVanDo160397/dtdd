@@ -3,12 +3,10 @@
  ?>
 <style>
     * {box-sizing: border-box;}
-
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
     }
-
     .search-container{
         margin-top:30px;
     }
@@ -143,7 +141,6 @@
 @section('script')
     <script>
         $(document).ready(function(){
-
             $('#search').keyup(function(){
                 var key = $(this).val();
                 var _token = $('input[name="_token"]').val();

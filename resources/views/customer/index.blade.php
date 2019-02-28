@@ -26,10 +26,10 @@
             <img src="{{asset('frontend/img/slide/slide-3.png')}}" alt="">
         </div>
         <div class="item">
-            <img src="{{asset('frontend/img/slide/slide-1.png')}}" alt="">
+            <img src="{{asset('frontend/img/slide/slide-7.png')}}" alt="">
         </div>
         <div class="item">
-            <img src="{{asset('frontend/img/slide/slide-5.png')}}" alt="">
+            <img src="{{asset('frontend/img/slide/slide-6.png')}}" alt="">
         </div>
     </div>      
 </div>

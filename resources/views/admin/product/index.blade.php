@@ -52,7 +52,7 @@
 							</td>
 							<td>{{$product->name}}</td>
 							<td>{{$product->category->name}}</td>
-							<td>{{$product->price}}</td>
+							<td>{{number_format($product->price)}} đ</td>
 							<td>@if($product->status == 1) <i class="fas fa-check"></i>@endif</td>
 							<td>
 								<a href="#" class="open-modal" data-toggle="modal" data-cat="{{$product->category->name}}" data-product ="{{ $product->toJson()}}" data-target="#myModal">Xem chi tiết</a>

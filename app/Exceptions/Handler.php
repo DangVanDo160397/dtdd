@@ -66,7 +66,6 @@ class Handler extends ExceptionHandler
         if($request->expectsJson()) {
             return response()->json(['message' => $exception->getMessage()], 401);
         }
-
         $guards = $exception->guards();
         $firstGuard = array_get($guards, 0);
         switch($firstGuard) {

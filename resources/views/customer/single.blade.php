@@ -160,8 +160,35 @@
             		</div>
             	</div>
             </div>
+
+            <div class="latest-product" style="margin-top:10px; border-top: 0.5px solid #ccc;">
+                    <h2 class="section-title" style="text-align: left;padding-top: 10px"><a style="color:#00483e" href="#">Các sản phẩm có liên quan</a></h2>
+                    <div class="product-carousel" style="padding-top: 10px">
+                        @foreach($list_product as $product)
+                        <div class="single-product" style="text-align: center;">
+                            <div class="product-f-image">
+                                <img src="{{asset('storage/'.$product->thumbnail)}}" alt="">
+                                <div class="product-hover">
+                                    <a href="{{$product['product_id']}}" id="cart" data-id="{{$product['product_id']}}" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Giỏ hàng 
+                                        {{csrf_field()}}
+                                    </a>
+                                    
+                                    <a href="{{route('customer.product',$product['slug'])}}" class="view-details-link"><i class="fa fa-link"></i> Chi tiết</a>
+                                </div>
+                            </div>
+                            
+                            <h2><a href="{{route('customer.product',$product['product_id'])}}">{{$product['name']}}</a></h2>
+                            
+                            <div class="product-carousel-price">
+                                <ins style="color:red;">{{number_format($product['price'])}} <span style="text-decoration: underline;">đ</span></ins> <del></del>
+                            </div> 
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
         </div>
    </div>
+   
    
 @endsection('content')
 @section('script')
