@@ -30,7 +30,7 @@ jQuery(document).ready(function($){
         margin:20,
         autoplay:true,
         autoplayTimeout:3000,
-        responsiveClass:true,
+        // responsiveClass:true,
         responsive:{
             0:{
                 items:1,

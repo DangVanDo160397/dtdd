@@ -130,7 +130,7 @@ class ProductsController extends Controller
     public function search(Request $request){    
         $key = trim($request->key);
         if($key != ""){
-            $list_products = Products::where('cat_id','LIKE','%'.$key.'%')->paginate(5);
+            $list_products = Products::where('name','LIKE','%'.$key.'%')->paginate(5);
             if(count($list_products) > 0){
                 $count  = count($list_products);
                 return view('admin.product.search',compact('list_products'))->with('error',' Không tìm thấy');

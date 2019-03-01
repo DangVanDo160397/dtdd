@@ -12,7 +12,9 @@
     margin-bottom: 20px;
 }
 </style>
-<div class="slider-area">
+
+<div class="slider-area" style="width: 100%">
+    <div class="container">
    <!-- Slider -->
    <div class="slider-bar">
        <div class="slide-carousel owl-theme">
@@ -32,6 +34,7 @@
             <img src="{{asset('frontend/img/slide/slide-6.png')}}" alt="">
         </div>
     </div>      
+</div>
 </div>
 <!-- ./Slider -->
 </div> <!-- End slider area -->
@@ -218,8 +221,8 @@
             <div class="col-md-4">
                 <div class="single-product-widget">
                     <div class="single-wid-product">
-                        <a href="single-product.html"><img src="{{asset($new->thumbnail)}}" alt="" class="product-thumb"></a>
-                        <h3><a href="{{route('customer.product',$random->product_id)}}">{{$new->title}}</a></h3>
+                        <a href="#"><img src="{{asset($new->thumbnail)}}" alt="" class="product-thumb"></a>
+                        <h3><a href="#">{{$new->title}}</a></h3>
                         <p>{{preg_replace('/((\w+\W*){'.(10).'}(\w+))(.*)/', '${1}', $new->content).'...'}}</p>
                         <div class="product-wid-price">
                             <ins></ins> <del></del>
