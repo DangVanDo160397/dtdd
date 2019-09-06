@@ -13,6 +13,7 @@ class HomeController extends Controller
 {
     //
 	public function index(Request $request){
+
 		$check = Auth::guard('customer')->user();
 		$cate_list = Company::all();
 		$product_top_hot = Products::where('status',1)->limit(3)->get();
@@ -24,6 +25,7 @@ class HomeController extends Controller
 	}
 	public function get_product($slug){
 		$product = Products::where('slug',$slug)->first();
+
 		$list_product = Products::where('cat_id',$product->cat_id)->where('slug','!=',$product->slug)->inRandomOrder()->limit(5)->get();
 		return view('customer.single',compact('product','list_product'));
 	}

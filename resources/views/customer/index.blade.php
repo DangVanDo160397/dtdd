@@ -84,6 +84,7 @@
                         $list_product = $cate->product;
                         ?>
                         @foreach($list_product->all() as $product)
+
                         <div class="single-product" style="text-align: center;">
                             <div class="product-f-image">
                                 <img src="{{asset('storage/'.$product['thumbnail'])}}" alt="">
@@ -92,11 +93,11 @@
                                         {{csrf_field()}}
                                     </a>
                                     
-                                    <a href="{{route('customer.product',$product['slug'])}}" class="view-details-link"><i class="fa fa-link"></i> Chi tiết</a>
+                                    <a href="{{route('customer.product',$product->slug)}}" class="view-details-link"><i class="fa fa-link"></i> Chi tiết</a>
                                 </div>
                             </div>
                             
-                            <h2><a href="{{route('customer.product',$product['product_id'])}}">{{$product['name']}}</a></h2>
+                            <h2><a href="{{route('customer.product',$product->slug)}}">{{$product['name']}}</a></h2>
                             
                             <div class="product-carousel-price">
                                 <ins style="color:red;">{{number_format($product['price'])}} <span style="text-decoration: underline;">đ</span></ins> <del></del>
